@@ -1,0 +1,7 @@
+Home_page_Julie:
+    path:     /home
+    defaults: { _controller: JuliePlatformBundle:Home:index }
+
+Bye_page_Julie:
+    path:     /bye
+    defaults: { _controller: JuliePlatformBundle:Bye:index }
