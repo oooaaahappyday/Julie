@@ -1,9 +1,9 @@
-login:
-    pattern:  /login
-    defaults: { _controller: JulieUserBundle:Security:login }
+#login:
+ #   pattern:  /login
+  #  defaults: { _controller: JulieUserBundle:Security:login }
 
-login_check:
-    pattern:  /login_check
+#login_check:
+ #   pattern:  /login_check
 
-logout:
-    pattern:  /logout
+#logout:
+ #   pattern:  /logout

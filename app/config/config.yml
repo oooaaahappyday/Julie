@@ -57,7 +57,7 @@ assetic:
 
 # BrainCrafted_bootstrap Configuration
 #braincrafted_bootstrap:
- #   less_filter: less
+ #  less_filter: less
 
 # Doctrine Configuration
 doctrine:

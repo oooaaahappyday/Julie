@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{# <link <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> #}
+	<title>{% block title %}Julie Franchet{% endblock %}</title>
+	<!-- Bootstrap core CSS -->
+	<link href="../../vendor/twbs/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="../../vendor/twbs/bootstrap/examples/navbar-fixed-top/navbar-fixed-top.css" rel="stylesheet">
+	{#<link href="navbar-fixed-top.css" rel="stylesheet">#}
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Julie Franchet</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportage <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Australie</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Art
+								<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Lightpainting</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Studio
+									<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">SKEMA</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Vidéo
+										<b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Rallye</a></li>
+										</ul>
+									</li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Souvenir
+											<b class="caret"></b></a>
+											<ul class="dropdown-menu">
+												<li><a href="#">Action</a></li>
+											</ul>
+										</li>
+										<li><a href="/Julie/web/app_dev.php/about">About</a></li>
+										<li><a href="/Julie/web/app_dev.php/contact">Contact</a></li>
+										<li><a href="/Julie/web/app_dev.php/login">Login</a></li>
+									</ul>
+								</div> <!--/.nav-collapse -->
+							</div> <!-- div container -->
+						</div> <!-- div tnavbar -->
+					</div> <!-- div container-fluid -->
+
+					<div>
+						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+							{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+							<a href="{{ path('fos_user_security_logout') }}">
+								{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+							</a>
+							{# <a href="{{ path('Admin Page') }}">Admin Page</a> #}
+							{% else %}
+							{#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+						{% endif %}
+					</div>
+
+					{% if app.request.hasPreviousSession %}
+						{% for type, messages in app.session.flashbag.all() %}
+							{% for message in messages %}
+								<div class="flash-{{ type }}">
+									{{ message }}
+								</div>
+							{% endfor %}
+						{% endfor %}
+					{% endif %}
+
+					<div>
+						{% block fos_user_content %}
+						{% endblock fos_user_content %}
+					</div>
+
+					{% block body %}
+					{% endblock %}
+
+					<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+					<script src="../../vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+				</body>
+				</html>

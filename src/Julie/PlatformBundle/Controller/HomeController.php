@@ -17,4 +17,26 @@ class HomeController extends Controller
 		);
 		return new Response($content);
 	}
+
+	public function aboutAction()
+	{
+		$content = $this
+		->get('templating')
+		->render('JuliePlatformBundle:Navbar:about.html.twig', array(
+			'name' => 'Julie'
+			)
+		);
+		return new Response($content);
+	}
+
+	public function contactAction()
+	{
+		$content = $this
+		->get('templating')
+		->render('JuliePlatformBundle:Navbar:contact.html.twig', array(
+			'name' => 'Julie'
+			)
+		);
+		return new Response($content);
+	}
 }

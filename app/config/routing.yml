@@ -23,9 +23,6 @@ fos_user_change_password:
     prefix: /profile
 
 home:
-    pattern:  /home
-    defaults: { _controller: JuliePlatformBundle:home:index }
+    path:  /
+    defaults: { _controller: JuliePlatformBundle:Home:index }
 
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
