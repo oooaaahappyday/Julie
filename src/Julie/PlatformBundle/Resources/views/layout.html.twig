@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	{# <link <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"> #}
 	<title>{% block title %}Julie Franchet{% endblock %}</title>
-	<!-- Bootstrap core CSS -->
-	<link href="../../vendor/twbs/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 
-	<!-- Custom styles for this template -->
-	<link href="../../vendor/twbs/bootstrap/examples/navbar-fixed-top/navbar-fixed-top.css" rel="stylesheet">
-	{#<link href="navbar-fixed-top.css" rel="stylesheet">#}
+	{% block stylesheets %}
+		<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('css/main.css') }}">
+	{% endblock %}
+
 </head>
 <body>
 	<div class="container-fluid">
@@ -28,7 +28,7 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Home</a></li>
+						<li class="active"><a href="/Julie/web/app_dev.php/home">Home</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportage <b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -63,7 +63,7 @@
 												<li><a href="#">Action</a></li>
 											</ul>
 										</li>
-										<li><a href="/Julie/web/app_dev.php/about">About</a></li>
+										{#<li><a href="{{ path('JuLie_PlatformBundle_about') }}">About</a></li>#}
 										<li><a href="/Julie/web/app_dev.php/contact">Contact</a></li>
 										<li><a href="/Julie/web/app_dev.php/login">Login</a></li>
 									</ul>
@@ -98,11 +98,16 @@
 						{% block fos_user_content %}
 						{% endblock fos_user_content %}
 					</div>
+					<div class="container-fluid">
+						{% block left_side %}
+						{% endblock left_side %}
+					</div>
+					<div class="container-fluid">
+						{% block body %}
+						{% endblock body %}
+					</div>
 
-					{% block body %}
-					{% endblock %}
-
-					<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-					<script src="../../vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+					<script type="text/Javascript" src="{{ asset('/js/jquery-1.11.1.js')}}"></script>
+					<script type="text/Javascript" src="{{ asset('/js/bootstrap.min.js')}}"></script>
 				</body>
 				</html>
