@@ -70,42 +70,43 @@
 								</div> <!--/.nav-collapse -->
 							</div> <!-- div container -->
 						</div> <!-- div tnavbar -->
-					</div> <!-- div container-fluid -->
+						<div>
+							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+								{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+								<a href="{{ path('fos_user_security_logout') }}">
+									{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+								</a>
+								{# <a href="{{ path('Admin Page') }}">Admin Page</a> #}
+								{% else %}
+								{#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+							{% endif %}
+						</div>
 
-					<div>
-						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-							{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-							<a href="{{ path('fos_user_security_logout') }}">
-								{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-							</a>
-							{# <a href="{{ path('Admin Page') }}">Admin Page</a> #}
-							{% else %}
-							{#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
-						{% endif %}
-					</div>
-
-					{% if app.request.hasPreviousSession %}
-						{% for type, messages in app.session.flashbag.all() %}
-							{% for message in messages %}
-								<div class="flash-{{ type }}">
-									{{ message }}
-								</div>
+						{% if app.request.hasPreviousSession %}
+							{% for type, messages in app.session.flashbag.all() %}
+								{% for message in messages %}
+									<div class="flash-{{ type }}">
+										{{ message }}
+									</div>
+								{% endfor %}
 							{% endfor %}
-						{% endfor %}
-					{% endif %}
+						{% endif %}
 
-					<div>
-						{% block fos_user_content %}
-						{% endblock fos_user_content %}
-					</div>
-					<div class="container-fluid">
-						{% block left_side %}
-						{% endblock left_side %}
-					</div>
-					<div class="container-fluid">
-						{% block body %}
-						{% endblock body %}
-					</div>
+						<div>
+							{% block fos_user_content %}
+							{% endblock fos_user_content %}
+						</div>
+						<div class="row">
+							<div class="col-xs-4 col-sm-3 col-md-2 col-lg-2">
+								{% block left_side %}
+								{% endblock left_side %}
+							</div>
+							<div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
+								{% block body %}
+								{% endblock body %}
+							</div>
+						</div> <!-- div class row -->
+					</div> <!-- div container-fluid -->
 
 					<script type="text/Javascript" src="{{ asset('/js/jquery-1.11.1.js')}}"></script>
 					<script type="text/Javascript" src="{{ asset('/js/bootstrap.min.js')}}"></script>
