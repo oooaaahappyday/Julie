@@ -1,5 +1,24 @@
 body {
-  min-height: 2000px;
+  
   padding-top: 100px;
   background-color: #E6E6FA;
 }
+
+img {
+    
+}
+
+footer {
+	margin-top: 30px;
+}
+
+.carousel-inner .item img {
+    max-height: 600px;
+    height: auto;
+    
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
