@@ -27,7 +27,7 @@
 					<div class="navbar-brand" href="#">Julie Franchet</div>
 				</div>
 				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
+					<ul class="nav navbar-nav">
 						<li class="active"><a href="/Julie/web/app_dev.php/home">Home</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportage <b class="caret"></b></a>
@@ -92,26 +92,23 @@
 							{% endfor %}
 						{% endif %}
 
-						<div id="fos_user">
+						<div>
 							{% block fos_user_content %}
 							{% endblock fos_user_content %}
 						</div>
-						<div id="left_side">
-							{% block left_side %}
-							{% endblock left_side %}
-						</div>
-						<div id="right_side">
-							{% block right_side %}
-							{% endblock right_side %}
-						</div>
+						<div class="row">
+							<div class="col-xs-4 col-sm-3 col-md-2 col-lg-2">
+								{% block left_side %}
+								{% endblock left_side %}
+							</div>
+							<div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
+								{% block body %}
+								{% endblock body %}
+							</div>
+						</div> <!-- div class row -->
 					</div> <!-- div container-fluid -->
 
 					<script type="text/Javascript" src="{{ asset('/js/jquery-1.11.1.js')}}"></script>
 					<script type="text/Javascript" src="{{ asset('/js/bootstrap.min.js')}}"></script>
-
 				</body>
-				<footer>
-					{% block footer %}
-					{% endblock footer %}
-				</footer>
 				</html>
