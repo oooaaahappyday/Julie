@@ -1,0 +1,16 @@
+{% extends "JuliePlatformBundle::layout_gallery.html.twig" %}
+
+{% block title %} {{parent() }} - Reportage{% endblock %}
+
+	{% block left_side %}
+		<div class"well">
+			{{ form(form) }}
+		</div>
+		
+	{% endblock left_side %}
+
+	{% block right_side %}
+		<p>zone upload et preview des photos</p>
+
+		
+	{% endblock right_side %}

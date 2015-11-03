@@ -12,6 +12,9 @@ security:
         main:
             id: fos_user.user_provider.username
 
+    access_control:
+        - { path: ^/NouvelleGalerie, roles: ROLE_ADMIN }
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/

@@ -9,3 +9,7 @@ About:
 Contact:
     path:     /contact
     defaults: { _controller: JuliePlatformBundle:Home:contact }
+
+NouvelleGalerie:
+    path:     /NouvelleGalerie
+    defaults: { _controller: JuliePlatformBundle:Galeries:NouvelleGalerie }
