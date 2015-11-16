@@ -74,6 +74,7 @@ class Galerie
     public function __construct()
     {
         $this->createdAt = new \datetime();
+
     }
 
     /**
@@ -281,5 +282,15 @@ class Galerie
     public function getCategorie()
     {
         return $this->categorie;
+    }
+
+    /**
+    * (solve the problem of string conversion)
+    *
+    * @return string String representation of this class
+    */
+    public function __toString()
+    {
+        return $this->materiel;
     }
 }

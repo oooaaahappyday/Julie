@@ -4,6 +4,9 @@ namespace Julie\PlatformBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Julie\PlatformBundle\Entity\Galerie;
+use Julie\PlatformBundle\Entity\Categorie;
+use Julie\PlatformBundle\Entity\CategorieRepository;
 
 class HomeController extends Controller
 {
@@ -39,4 +42,6 @@ class HomeController extends Controller
 		);
 		return new Response($content);
 	}
+
+	
 }

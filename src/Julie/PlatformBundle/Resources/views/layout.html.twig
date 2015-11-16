@@ -34,7 +34,15 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportage <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Australie</a></li>
+							  
+								<?php if(count($listCategories) > 0) {
+								  foreach($listCategories as $categorie) {
+								    echo '<li>'.$categorie->getNom().'</li>';
+								  }
+								} else { ?>
+								  <li>Pas d'utilisateur trouvé.</li>
+								<?php } ?>
+
 							</ul>
 						</li>
 						<li class="dropdown">

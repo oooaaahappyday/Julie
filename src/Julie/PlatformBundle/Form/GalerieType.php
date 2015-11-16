@@ -5,6 +5,7 @@ namespace Julie\PlatformBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Julie\PlatformBundle\Entity\Categorie;
 
 class GalerieType extends AbstractType
 {
@@ -15,12 +16,19 @@ class GalerieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom',       'text')
-            ->add('date',      'date')
-            ->add('pays',      'text')
-            ->add('lieux',     'text')
-            ->add('materiel',  'text')
-            ->add('categorie', 'choice')
+            ->add('nom',        'text')
+            ->add('date',       'date')
+            ->add('pays',       'text')
+            ->add('lieux',      'text')
+            ->add('materiel',   'text')
+            ->add('categorie',  'entity', array(
+                'class'         => 'JuliePlatformBundle:Categorie',
+                'choice_label'  => 'nom',
+                'expanded'      => false,
+                'multiple'      => false,
+                'required'      => true
+                 ))
+            ->add('enregistrer','submit')
         ;
     }
     
