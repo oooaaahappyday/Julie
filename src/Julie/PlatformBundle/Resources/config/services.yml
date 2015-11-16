@@ -1,4 +1,0 @@
-services:
-#    julie_platform.example:
-#        class: Julie\PlatformBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
