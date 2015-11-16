@@ -1,0 +1,15 @@
+Home_page_Julie:
+    path:     /home
+    defaults: { _controller: JuliePlatformBundle:Home:index }
+
+About:
+    path:     /about
+    defaults: { _controller: JuliePlatformBundle:Home:about }
+
+Contact:
+    path:     /contact
+    defaults: { _controller: JuliePlatformBundle:Home:contact }
+
+NouvelleGalerie:
+    path:     /NouvelleGalerie
+    defaults: { _controller: JuliePlatformBundle:Galeries:NouvelleGalerie }

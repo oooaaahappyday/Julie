@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}Julie Franchet{% endblock %}</title>
+
+	{% block stylesheets %}
+		<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('css/main.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/flexslider.css') }}">
+	{% endblock %}
+
+
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand" href="#">Julie Franchet</div>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><a href="/Julie/web/app_dev.php/home">Home</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportage <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+							  
+								<?php if(count($listCategories) > 0) {
+								  foreach($listCategories as $categorie) {
+								    echo '<li>'.$categorie->getNom().'</li>';
+								  }
+								} else { ?>
+								  <li>Pas d'utilisateur trouvé.</li>
+								<?php } ?>
+
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Art
+								<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Lightpainting</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Studio
+									<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">SKEMA</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Vidéo
+										<b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Rallye</a></li>
+										</ul>
+									</li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Souvenir
+											<b class="caret"></b></a>
+											<ul class="dropdown-menu">
+												<li><a href="#">Action</a></li>
+											</ul>
+										</li>
+										{#<li><a href="{{ path('JuLie_PlatformBundle_about') }}">About</a></li>#}
+										<li><a href="/Julie/web/app_dev.php/contact">Contact</a></li>
+										<li><a href="/Julie/web/app_dev.php/login">Login</a></li>
+									</ul>
+								</div> <!--/.nav-collapse -->
+							</div> <!-- div container -->
+						</div> <!-- div tnavbar -->
+						<div>
+							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+								{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+								<a href="{{ path('fos_user_security_logout') }}" class="btn btn-default" role="button">
+									{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+								</a>
+								<a href="/Julie/web/app_dev.php/NouvelleGalerie" class="btn btn-default" role="button">Nouvelle Galerie</a>
+								{% else %}
+								{#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+							{% endif %}
+						</div>
+
+						{% if app.request.hasPreviousSession %}
+							{% for type, messages in app.session.flashbag.all() %}
+								{% for message in messages %}
+									<div class="flash-{{ type }}">
+										{{ message }}
+									</div>
+								{% endfor %}
+							{% endfor %}
+						{% endif %}
+
+						<div>
+							{% block fos_user_content %}
+							{% endblock fos_user_content %}
+						</div>
+						<div>
+							{% block right_side %}
+							{% endblock right_side %}
+						</div>
+						<div>
+							{% block footer %}
+							{% endblock footer %}
+						</div>
+					</div> <!-- div container-fluid -->
+
+					<script type="text/Javascript" src="{{ asset('/js/jquery-1.11.1.js')}}"></script>
+					<script type="text/Javascript" src="{{ asset('/js/bootstrap.min.js')}}"></script>
+					<script type="text/Javascript" src="{{ asset('/js/jquery.flexslider-min.js')}}"></script>
+					<script type="text/Javascript" src="{{ asset('/js/jquery.flexslider.js')}}"></script>
+					<script type="text/javascript" charset="utf-8">
+					
+					$(window).load(function() {
+					  $('.flexslider').flexslider({
+					    animation: "fade"
+					  });
+					});
+					</script>
+
+</body>
+</html>
