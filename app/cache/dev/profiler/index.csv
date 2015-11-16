@@ -17,3 +17,12 @@ cff91a,::1,GET,http://localhost/Julie/web/app_dev.php/,1447201585,4a78fb,200
 2db0d3,::1,GET,http://localhost/Julie/web/app_dev.php/,1447201902,,200
 9e2ddb,::1,GET,http://localhost/Julie/web/app_dev.php/,1447202015,,200
 c45ba1,::1,GET,http://localhost/Julie/web/app_dev.php/home,1447678403,,200
+ec68b9,::1,GET,http://localhost/Julie/web/app_dev.php/home,1447694471,,200
+f15ad5,::1,GET,http://localhost/Julie/web/app_dev.php/login,1447694474,,200
+7ba688,::1,POST,http://localhost/Julie/web/app_dev.php/login_check,1447694481,,302
+8324d5,::1,GET,http://localhost/Julie/web/app_dev.php/,1447694482,,200
+33b3a8,::1,GET,http://localhost/Julie/web/app_dev.php/NouvelleGalerie,1447694484,4becbb,200
+4becbb,::1,GET,http://localhost/Julie/web/app_dev.php/NouvelleGalerie,1447694484,,500
+a86d3f,::1,GET,http://localhost/Julie/web/app_dev.php/NouvelleGalerie,1447694539,,200
+c8a5e0,::1,POST,http://localhost/Julie/web/app_dev.php/NouvelleGalerie,1447694575,,302
+27f02e,::1,GET,http://localhost/Julie/web/app_dev.php/,1447694575,,200

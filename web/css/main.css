@@ -1,0 +1,25 @@
+body { 
+  padding-top:      100px;
+  background-color: #E6E6FA;
+}
+
+.slides,
+.flex-control-nav,
+.flex-direction-nav {
+    margin:     0;
+    padding:    0;
+    list-style: none;
+}
+
+.flexslider {
+	max-width:     100%;
+	max-height:    700px;
+	overflow:      hidden;
+}
+
+.flexslider .slides img {
+	width: 100%;
+	vertical-align: middle;
+}
+
+.flexslider .slides { zoom: 1; }
