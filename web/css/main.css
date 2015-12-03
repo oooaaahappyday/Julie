@@ -1,5 +1,5 @@
 body { 
-  padding-top:      100px;
+  padding-top:      110px;
   background-color: #E6E6FA;
 }
 
@@ -23,3 +23,8 @@ body {
 }
 
 .flexslider .slides { zoom: 1; }
+
+#banniere {
+	display: block;
+	margin: 0 auto;
+}

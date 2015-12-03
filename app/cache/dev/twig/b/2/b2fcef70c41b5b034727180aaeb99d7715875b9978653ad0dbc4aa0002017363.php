@@ -20,8 +20,8 @@ class __TwigTemplate_7344184cb82e0732a3947f962c40ccf8ab66995cffb731238f29b4d7cc3
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_ac9a793d81ce1b070bf439533d0dd553bf197d07ca731a2549bef07c6224e6dd = $this->env->getExtension("native_profiler");
-        $__internal_ac9a793d81ce1b070bf439533d0dd553bf197d07ca731a2549bef07c6224e6dd->enter($__internal_ac9a793d81ce1b070bf439533d0dd553bf197d07ca731a2549bef07c6224e6dd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "JuliePlatformBundle::layout.html.twig"));
+        $__internal_ee95f687c5a79068cdd54cdf6c35cd041d8b1e6fe522a5909c26bb8e4bc80570 = $this->env->getExtension("native_profiler");
+        $__internal_ee95f687c5a79068cdd54cdf6c35cd041d8b1e6fe522a5909c26bb8e4bc80570->enter($__internal_ee95f687c5a79068cdd54cdf6c35cd041d8b1e6fe522a5909c26bb8e4bc80570_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "JuliePlatformBundle::layout.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
@@ -108,53 +108,54 @@ class __TwigTemplate_7344184cb82e0732a3947f962c40ccf8ab66995cffb731238f29b4d7cc3
 \t\t\t\t\t\t\t\t</div> <!--/.nav-collapse -->
 \t\t\t\t\t\t\t</div> <!-- div container -->
 \t\t\t\t\t\t</div> <!-- div tnavbar -->
-\t\t\t\t\t\t<div>
+
+\t\t\t\t\t\t<div id=\"authentication\">
 \t\t\t\t\t\t\t";
-        // line 84
+        // line 85
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 85
+            // line 86
             echo "\t\t\t\t\t\t\t\t";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.logged_in_as", array("%username%" => $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array())), "FOSUserBundle"), "html", null, true);
             echo " |
 \t\t\t\t\t\t\t\t<a href=\"";
-            // line 86
+            // line 87
             echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
             echo "\" class=\"btn btn-default\" role=\"button\">
 \t\t\t\t\t\t\t\t\t";
-            // line 87
+            // line 88
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.logout", array(), "FOSUserBundle"), "html", null, true);
             echo "
 \t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t<a href=\"/Julie/web/app_dev.php/NouvelleGalerie\" class=\"btn btn-default\" role=\"button\">Nouvelle Galerie</a>
 \t\t\t\t\t\t\t\t";
         } else {
-            // line 91
-            echo "\t\t\t\t\t\t\t\t";
             // line 92
+            echo "\t\t\t\t\t\t\t\t";
+            // line 93
             echo "\t\t\t\t\t\t\t";
         }
-        // line 93
+        // line 94
         echo "\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t";
-        // line 95
+        // line 96
         if ($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request", array()), "hasPreviousSession", array())) {
-            // line 96
+            // line 97
             echo "\t\t\t\t\t\t\t";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "all", array(), "method"));
             foreach ($context['_seq'] as $context["type"] => $context["messages"]) {
-                // line 97
+                // line 98
                 echo "\t\t\t\t\t\t\t\t";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable($context["messages"]);
                 foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-                    // line 98
+                    // line 99
                     echo "\t\t\t\t\t\t\t\t\t<div class=\"flash-";
                     echo twig_escape_filter($this->env, $context["type"], "html", null, true);
                     echo "\">
 \t\t\t\t\t\t\t\t\t\t";
-                    // line 99
+                    // line 100
                     echo twig_escape_filter($this->env, $context["message"], "html", null, true);
                     echo "
 \t\t\t\t\t\t\t\t\t</div>
@@ -163,51 +164,77 @@ class __TwigTemplate_7344184cb82e0732a3947f962c40ccf8ab66995cffb731238f29b4d7cc3
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 102
+                // line 103
                 echo "\t\t\t\t\t\t\t";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['type'], $context['messages'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 103
+            // line 104
             echo "\t\t\t\t\t\t";
         }
-        // line 104
+        // line 105
         echo "
 \t\t\t\t\t\t<div>
 \t\t\t\t\t\t\t";
-        // line 106
+        // line 107
         $this->displayBlock('fos_user_content', $context, $blocks);
-        // line 108
+        // line 109
         echo "\t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div>
+\t\t\t\t\t\t\t<canvas id=\"banniere\" width=\"3000\" height=\"70\"></canvas>
+\t\t\t\t\t\t\t<script>
+\t\t\t\t\t\t\t\tvar canvas = document.getElementById('banniere');
+\t\t\t\t\t\t\t\tvar ctx = canvas.getContext('2d');
+\t\t\t\t\t\t\t\tvar numberOfLines = 5;
+\t\t\t\t\t\t\t\tvar i = 0;
+\t\t\t\t\t\t\t\tvar cycle = function() {
+\t\t\t\t\t\t\t\t  ctx.clearRect(0, 0, canvas.width, canvas.height);
+\t\t\t\t\t\t\t\t  for(var j=0; j<numberOfLines; ++j) {
+\t\t\t\t\t\t\t\t    ctx.lineWidth = 1+2*(numberOfLines-j);
+\t\t\t\t\t\t\t\t    ctx.strokeStyle = 'rgba(100,200,'+Math.floor(Math.abs(Math.cos(i/80)*256))+','+(j/5+0.1)+')';
+\t\t\t\t\t\t\t\t    var offset = (i+j*10*Math.abs(Math.cos(i/100)))/20;
+\t\t\t\t\t\t\t\t    var y = (Math.sin(offset)+1)*canvas.height/2;
+\t\t\t\t\t\t\t\t    var cpy1 = (Math.cos(offset)+0.5)*canvas.height;
+\t\t\t\t\t\t\t\t    var cpy2 = canvas.height - cpy1;
+\t\t\t\t\t\t\t\t    ctx.beginPath();
+\t\t\t\t\t\t\t\t    ctx.moveTo(0, y);
+\t\t\t\t\t\t\t\t    ctx.bezierCurveTo(canvas.width/3, cpy1, 2*canvas.width/3, cpy2, canvas.width, y);
+\t\t\t\t\t\t\t\t    ctx.stroke();
+\t\t\t\t\t\t\t\t  }
+\t\t\t\t\t\t\t\t  i++;
+\t\t\t\t\t\t\t\t};
+\t\t\t\t\t\t\t\tsetInterval(cycle, 30);
+\t\t\t\t\t\t\t</script>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div>
 \t\t\t\t\t\t\t";
-        // line 110
+        // line 137
         $this->displayBlock('right_side', $context, $blocks);
-        // line 112
+        // line 139
         echo "\t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div>
 \t\t\t\t\t\t\t";
-        // line 114
+        // line 141
         $this->displayBlock('footer', $context, $blocks);
-        // line 116
+        // line 143
         echo "\t\t\t\t\t\t</div>
 \t\t\t\t\t</div> <!-- div container-fluid -->
 
 \t\t\t\t\t<script type=\"text/Javascript\" src=\"";
-        // line 119
+        // line 146
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("/js/jquery-1.11.1.js"), "html", null, true);
         echo "\"></script>
 \t\t\t\t\t<script type=\"text/Javascript\" src=\"";
-        // line 120
+        // line 147
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t\t\t<script type=\"text/Javascript\" src=\"";
-        // line 121
+        // line 148
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("/js/jquery.flexslider-min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t\t\t<script type=\"text/Javascript\" src=\"";
-        // line 122
+        // line 149
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("/js/jquery.flexslider.js"), "html", null, true);
         echo "\"></script>
 \t\t\t\t\t<script type=\"text/javascript\" charset=\"utf-8\">
@@ -222,27 +249,27 @@ class __TwigTemplate_7344184cb82e0732a3947f962c40ccf8ab66995cffb731238f29b4d7cc3
 </body>
 </html>";
         
-        $__internal_ac9a793d81ce1b070bf439533d0dd553bf197d07ca731a2549bef07c6224e6dd->leave($__internal_ac9a793d81ce1b070bf439533d0dd553bf197d07ca731a2549bef07c6224e6dd_prof);
+        $__internal_ee95f687c5a79068cdd54cdf6c35cd041d8b1e6fe522a5909c26bb8e4bc80570->leave($__internal_ee95f687c5a79068cdd54cdf6c35cd041d8b1e6fe522a5909c26bb8e4bc80570_prof);
 
     }
 
     // line 7
     public function block_title($context, array $blocks = array())
     {
-        $__internal_0f21d5915f828e444e71d2845c6462bd8ecc28fb12e931342fbe5b3dd861dff9 = $this->env->getExtension("native_profiler");
-        $__internal_0f21d5915f828e444e71d2845c6462bd8ecc28fb12e931342fbe5b3dd861dff9->enter($__internal_0f21d5915f828e444e71d2845c6462bd8ecc28fb12e931342fbe5b3dd861dff9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_c2e372ebb4435a54b31ad3275f3d0de7654667ac3d8f633b0738f32770bb7147 = $this->env->getExtension("native_profiler");
+        $__internal_c2e372ebb4435a54b31ad3275f3d0de7654667ac3d8f633b0738f32770bb7147->enter($__internal_c2e372ebb4435a54b31ad3275f3d0de7654667ac3d8f633b0738f32770bb7147_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "Julie Franchet";
         
-        $__internal_0f21d5915f828e444e71d2845c6462bd8ecc28fb12e931342fbe5b3dd861dff9->leave($__internal_0f21d5915f828e444e71d2845c6462bd8ecc28fb12e931342fbe5b3dd861dff9_prof);
+        $__internal_c2e372ebb4435a54b31ad3275f3d0de7654667ac3d8f633b0738f32770bb7147->leave($__internal_c2e372ebb4435a54b31ad3275f3d0de7654667ac3d8f633b0738f32770bb7147_prof);
 
     }
 
     // line 9
     public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_813a98527b7231930700c035eed35c01c3f87cc5ef9ce5ad1b08ed34c75ebeb0 = $this->env->getExtension("native_profiler");
-        $__internal_813a98527b7231930700c035eed35c01c3f87cc5ef9ce5ad1b08ed34c75ebeb0->enter($__internal_813a98527b7231930700c035eed35c01c3f87cc5ef9ce5ad1b08ed34c75ebeb0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+        $__internal_d5b5cd7e434b6506667ee6393ea57994a85d0498b86344e0a1750e0318fc7c74 = $this->env->getExtension("native_profiler");
+        $__internal_d5b5cd7e434b6506667ee6393ea57994a85d0498b86344e0a1750e0318fc7c74->enter($__internal_d5b5cd7e434b6506667ee6393ea57994a85d0498b86344e0a1750e0318fc7c74_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 10
         echo "\t\t<link rel=\"stylesheet\" href=\"";
@@ -262,46 +289,46 @@ class __TwigTemplate_7344184cb82e0732a3947f962c40ccf8ab66995cffb731238f29b4d7cc3
         echo "\">
 \t";
         
-        $__internal_813a98527b7231930700c035eed35c01c3f87cc5ef9ce5ad1b08ed34c75ebeb0->leave($__internal_813a98527b7231930700c035eed35c01c3f87cc5ef9ce5ad1b08ed34c75ebeb0_prof);
+        $__internal_d5b5cd7e434b6506667ee6393ea57994a85d0498b86344e0a1750e0318fc7c74->leave($__internal_d5b5cd7e434b6506667ee6393ea57994a85d0498b86344e0a1750e0318fc7c74_prof);
 
     }
 
-    // line 106
+    // line 107
     public function block_fos_user_content($context, array $blocks = array())
     {
-        $__internal_ee063b8d9b41cb6d9eaea0e4ea1328539db94d6393bc0cb8a9a11621aa2fcf6f = $this->env->getExtension("native_profiler");
-        $__internal_ee063b8d9b41cb6d9eaea0e4ea1328539db94d6393bc0cb8a9a11621aa2fcf6f->enter($__internal_ee063b8d9b41cb6d9eaea0e4ea1328539db94d6393bc0cb8a9a11621aa2fcf6f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+        $__internal_0047db16d0abd2d34f1a59a3b68c95fb2d272ac6d48a75aac5fab4d652bbe1d8 = $this->env->getExtension("native_profiler");
+        $__internal_0047db16d0abd2d34f1a59a3b68c95fb2d272ac6d48a75aac5fab4d652bbe1d8->enter($__internal_0047db16d0abd2d34f1a59a3b68c95fb2d272ac6d48a75aac5fab4d652bbe1d8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
-        // line 107
+        // line 108
         echo "\t\t\t\t\t\t\t";
         
-        $__internal_ee063b8d9b41cb6d9eaea0e4ea1328539db94d6393bc0cb8a9a11621aa2fcf6f->leave($__internal_ee063b8d9b41cb6d9eaea0e4ea1328539db94d6393bc0cb8a9a11621aa2fcf6f_prof);
+        $__internal_0047db16d0abd2d34f1a59a3b68c95fb2d272ac6d48a75aac5fab4d652bbe1d8->leave($__internal_0047db16d0abd2d34f1a59a3b68c95fb2d272ac6d48a75aac5fab4d652bbe1d8_prof);
 
     }
 
-    // line 110
+    // line 137
     public function block_right_side($context, array $blocks = array())
     {
-        $__internal_6cd5b3cef18ec769ff5da4989559602d0586481501148d7c31dec2fb62b5893f = $this->env->getExtension("native_profiler");
-        $__internal_6cd5b3cef18ec769ff5da4989559602d0586481501148d7c31dec2fb62b5893f->enter($__internal_6cd5b3cef18ec769ff5da4989559602d0586481501148d7c31dec2fb62b5893f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "right_side"));
+        $__internal_138762e36d30a28e75b80d3b4c30373fc08315d0fe2888590e466120c1cb894a = $this->env->getExtension("native_profiler");
+        $__internal_138762e36d30a28e75b80d3b4c30373fc08315d0fe2888590e466120c1cb894a->enter($__internal_138762e36d30a28e75b80d3b4c30373fc08315d0fe2888590e466120c1cb894a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "right_side"));
 
-        // line 111
+        // line 138
         echo "\t\t\t\t\t\t\t";
         
-        $__internal_6cd5b3cef18ec769ff5da4989559602d0586481501148d7c31dec2fb62b5893f->leave($__internal_6cd5b3cef18ec769ff5da4989559602d0586481501148d7c31dec2fb62b5893f_prof);
+        $__internal_138762e36d30a28e75b80d3b4c30373fc08315d0fe2888590e466120c1cb894a->leave($__internal_138762e36d30a28e75b80d3b4c30373fc08315d0fe2888590e466120c1cb894a_prof);
 
     }
 
-    // line 114
+    // line 141
     public function block_footer($context, array $blocks = array())
     {
-        $__internal_9f4de2e33c6426906d6d03d57461b7420066ec72ebaa4b969c3b49becbd6abaf = $this->env->getExtension("native_profiler");
-        $__internal_9f4de2e33c6426906d6d03d57461b7420066ec72ebaa4b969c3b49becbd6abaf->enter($__internal_9f4de2e33c6426906d6d03d57461b7420066ec72ebaa4b969c3b49becbd6abaf_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "footer"));
+        $__internal_adc2e3f0c7883f92525412f872f5ae95662cf5e39d4137f407266ca6ec57ce8f = $this->env->getExtension("native_profiler");
+        $__internal_adc2e3f0c7883f92525412f872f5ae95662cf5e39d4137f407266ca6ec57ce8f->enter($__internal_adc2e3f0c7883f92525412f872f5ae95662cf5e39d4137f407266ca6ec57ce8f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 115
+        // line 142
         echo "\t\t\t\t\t\t\t";
         
-        $__internal_9f4de2e33c6426906d6d03d57461b7420066ec72ebaa4b969c3b49becbd6abaf->leave($__internal_9f4de2e33c6426906d6d03d57461b7420066ec72ebaa4b969c3b49becbd6abaf_prof);
+        $__internal_adc2e3f0c7883f92525412f872f5ae95662cf5e39d4137f407266ca6ec57ce8f->leave($__internal_adc2e3f0c7883f92525412f872f5ae95662cf5e39d4137f407266ca6ec57ce8f_prof);
 
     }
 
@@ -317,7 +344,7 @@ class __TwigTemplate_7344184cb82e0732a3947f962c40ccf8ab66995cffb731238f29b4d7cc3
 
     public function getDebugInfo()
     {
-        return array (  302 => 115,  296 => 114,  289 => 111,  283 => 110,  276 => 107,  270 => 106,  261 => 13,  257 => 12,  253 => 11,  248 => 10,  242 => 9,  230 => 7,  211 => 122,  207 => 121,  203 => 120,  199 => 119,  194 => 116,  192 => 114,  188 => 112,  186 => 110,  182 => 108,  180 => 106,  176 => 104,  173 => 103,  167 => 102,  158 => 99,  153 => 98,  148 => 97,  143 => 96,  141 => 95,  137 => 93,  134 => 92,  132 => 91,  125 => 87,  121 => 86,  116 => 85,  114 => 84,  105 => 77,  42 => 15,  40 => 9,  35 => 7,  27 => 1,);
+        return array (  329 => 142,  323 => 141,  316 => 138,  310 => 137,  303 => 108,  297 => 107,  288 => 13,  284 => 12,  280 => 11,  275 => 10,  269 => 9,  257 => 7,  238 => 149,  234 => 148,  230 => 147,  226 => 146,  221 => 143,  219 => 141,  215 => 139,  213 => 137,  183 => 109,  181 => 107,  177 => 105,  174 => 104,  168 => 103,  159 => 100,  154 => 99,  149 => 98,  144 => 97,  142 => 96,  138 => 94,  135 => 93,  133 => 92,  126 => 88,  122 => 87,  117 => 86,  115 => 85,  105 => 77,  42 => 15,  40 => 9,  35 => 7,  27 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -402,7 +429,8 @@ class __TwigTemplate_7344184cb82e0732a3947f962c40ccf8ab66995cffb731238f29b4d7cc3
 /* 								</div> <!--/.nav-collapse -->*/
 /* 							</div> <!-- div container -->*/
 /* 						</div> <!-- div tnavbar -->*/
-/* 						<div>*/
+/* */
+/* 						<div id="authentication">*/
 /* 							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}*/
 /* 								{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |*/
 /* 								<a href="{{ path('fos_user_security_logout') }}" class="btn btn-default" role="button">*/
@@ -427,6 +455,32 @@ class __TwigTemplate_7344184cb82e0732a3947f962c40ccf8ab66995cffb731238f29b4d7cc3
 /* 						<div>*/
 /* 							{% block fos_user_content %}*/
 /* 							{% endblock fos_user_content %}*/
+/* 						</div>*/
+/* 						<div>*/
+/* 							<canvas id="banniere" width="3000" height="70"></canvas>*/
+/* 							<script>*/
+/* 								var canvas = document.getElementById('banniere');*/
+/* 								var ctx = canvas.getContext('2d');*/
+/* 								var numberOfLines = 5;*/
+/* 								var i = 0;*/
+/* 								var cycle = function() {*/
+/* 								  ctx.clearRect(0, 0, canvas.width, canvas.height);*/
+/* 								  for(var j=0; j<numberOfLines; ++j) {*/
+/* 								    ctx.lineWidth = 1+2*(numberOfLines-j);*/
+/* 								    ctx.strokeStyle = 'rgba(100,200,'+Math.floor(Math.abs(Math.cos(i/80)*256))+','+(j/5+0.1)+')';*/
+/* 								    var offset = (i+j*10*Math.abs(Math.cos(i/100)))/20;*/
+/* 								    var y = (Math.sin(offset)+1)*canvas.height/2;*/
+/* 								    var cpy1 = (Math.cos(offset)+0.5)*canvas.height;*/
+/* 								    var cpy2 = canvas.height - cpy1;*/
+/* 								    ctx.beginPath();*/
+/* 								    ctx.moveTo(0, y);*/
+/* 								    ctx.bezierCurveTo(canvas.width/3, cpy1, 2*canvas.width/3, cpy2, canvas.width, y);*/
+/* 								    ctx.stroke();*/
+/* 								  }*/
+/* 								  i++;*/
+/* 								};*/
+/* 								setInterval(cycle, 30);*/
+/* 							</script>*/
 /* 						</div>*/
 /* 						<div>*/
 /* 							{% block right_side %}*/

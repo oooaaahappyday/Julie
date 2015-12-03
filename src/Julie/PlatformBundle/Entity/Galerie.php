@@ -3,6 +3,7 @@
 namespace Julie\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Galerie
@@ -69,6 +70,11 @@ class Galerie
      * @ORM\Column(name="categorie", type="string", length=255)
      */
     private $categorie;
+
+    /**
+    * @ORM\OneToOne(targetEntity="Julie\PlatformBundle\Entity\Image", cascade={"persist", "remove"})
+    */
+    private $image;
 
 
     public function __construct()
@@ -292,5 +298,29 @@ class Galerie
     public function __toString()
     {
         return $this->materiel;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Julie\PlatformBundle\Entity\Image $image
+     *
+     * @return Galerie
+     */
+    public function setImage(\Julie\PlatformBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Julie\PlatformBundle\Entity\Image
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }
