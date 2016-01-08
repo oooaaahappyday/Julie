@@ -7,6 +7,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use symfony\Component\Validator\Constraints as Assert;
 
 /**
+ *Image
+ *
+ * @ORM\Table()
  * @ORM\Entity(repositoryClass="Julie\PlatformBundle\Entity\ImageRepository")
  * @ORM\HasLifecycleCallbacks
  */
@@ -24,19 +27,39 @@ class Image
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @ORM\Column(name="extension", type="string", length=255)
      */
-    private $url;
+    private $extension;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="alt", type="string", length=255)
+     * @ORM\Column(name="filename", type="string", length=255)
      */
-    private $alt;
+    private $filename;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=255)
+     */
+    private $titre;
     
-    private $file;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Galerie", inversedBy="images")
+    * @ORM\JoinColumn(name="galerie_id", referencedColumnName="id")
+    */
+    private $galerie;
+    /**
+     * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 400,
+     *     minHeight = 200,
+     *     maxHeight = 400
+     * )
+     */
+    public $file;
 
     private $tempFilename;
 
@@ -49,12 +72,12 @@ class Image
     {
         $this->file = $file;
         // check if a file already exists for this entity
-        if(null !== $this->url){
+        if(null !== $this->extension){
             // save file extension to remove it later
-            $this->tempFilename = $this->url;
-            // reinitialization of alt and url attributes
-            $this->url = null;
-            $this->alt = null;
+            $this->tempFilename = $this->extension;
+            // reinitialization of filename and extension attributes
+            $this->extension = null;
+            $this->filename = null;
         }
     }
 
@@ -68,10 +91,10 @@ class Image
         if (null === $this->file){
             return;
         }
-        // file's name is tis ID, we just have to save its extension
-        $this->url = $this->file->guessExtension();
-        // generate alt attribute of <img> with original file's name
-        $this->alt = $this->file->getClientOriginalName();
+        // file's name is its ID, we just have to save its extension
+        $this->extension = $this->file->guessExtension();
+        // generate filename attribute of <img> with original file's name
+        $this->filename = $this->file->getClientOriginalName();
     }
 
     /**
@@ -91,11 +114,11 @@ class Image
                 unlink($oldFile);
             }
         }
-        // move the sent file in ou chosen directory
+        // move the sent file in our chosen directory 
         $this->file->move(
             $this->getUploadRootDir(), // destination directory
-            $this->id.'.'.$this->url   // filename to create (id.extension)
-            );
+            $this->id.'.'.$this->extension   // filename to create (id.extension)
+        );   
     }
 
     /**
@@ -104,7 +127,7 @@ class Image
     public function preRemoveUpload()
     {
         // save temporarily filename because it relies on the id
-        $this->tempFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->url;
+        $this->tempFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->extension;
     }
 
     /**
@@ -133,7 +156,7 @@ class Image
 
     public function getWebPath()
     {
-        return $this->getUploadDir().'/'.$this->getId().'.'.$this->getUrl();
+        return $this->getUploadDir().'/'.$this->getId().'.'.$this->getExtension();
     }
 
     /**
@@ -147,50 +170,98 @@ class Image
     }
 
     /**
-     * Set url
+     * Set extension
      *
-     * @param string $url
+     * @param string $extension
      *
      * @return Image
      */
-    public function setUrl($url)
+    public function setExtension($extension)
     {
-        $this->url = $url;
+        $this->extension = $extension;
 
         return $this;
     }
 
     /**
-     * Get url
+     * Get extension
      *
      * @return string
      */
-    public function getUrl()
+    public function getExtension()
     {
-        return $this->url;
+        return $this->extension;
     }
 
     /**
-     * Set alt
+     * Set filename
      *
-     * @param string $alt
+     * @param string $filename
      *
      * @return Image
      */
-    public function setAlt($alt)
+    public function setFilename($filename)
     {
-        $this->alt = $alt;
+        $this->filename = $filename;
 
         return $this;
     }
 
     /**
-     * Get alt
+     * Get filename
      *
      * @return string
      */
-    public function getAlt()
+    public function getFilename()
     {
-        return $this->alt;
+        return $this->filename;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     *
+     * @return Image
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set galerie
+     *
+     * @param \Julie\PlatformBundle\Entity\Galerie $galerie
+     *
+     * @return Image
+     */
+    public function setGalerie(\Julie\PlatformBundle\Entity\Galerie $galerie)
+    {
+        $this->galerie = $galerie;
+
+        return $this;
+    }
+
+    /**
+     * Get galerie
+     *
+     * @return \Julie\PlatformBundle\Entity\Galerie
+     */
+    public function getGalerie()
+    {
+        return $this->galerie;
     }
 }

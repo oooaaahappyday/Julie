@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Julie\PlatformBundle\Entity\Categorie;
+use Julie\PlatformBundle\Form\ImageType;
 
 class GalerieType extends AbstractType
 {
@@ -30,7 +31,12 @@ class GalerieType extends AbstractType
                 'multiple'      => false,
                 'required'      => true
                  ))
-            ->add('image',      new ImageType())
+            ->add('images',      'collection', array(
+                'type'          => new ImageType(),
+                'prototype'     => true,
+                'allow_add'     => true,
+                'by_reference'  => false
+                ))
             ->add('enregistrer','submit')
         ;
     }

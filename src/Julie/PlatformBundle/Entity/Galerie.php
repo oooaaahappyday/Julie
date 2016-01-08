@@ -3,7 +3,9 @@
 namespace Julie\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Julie\PlatformBundle\Entity\Image;
 
 /**
  * Galerie
@@ -72,13 +74,15 @@ class Galerie
     private $categorie;
 
     /**
-    * @ORM\OneToOne(targetEntity="Julie\PlatformBundle\Entity\Image", cascade={"persist", "remove"})
+    * @ORM\OneToMany(targetEntity="Image", mappedBy="galerie", cascade={"persist", "remove"})
+    * @Assert\Valid()
     */
-    private $image;
+    private $images;
 
 
     public function __construct()
     {
+        $this->images    = new ArrayCollection();
         $this->createdAt = new \datetime();
 
     }
@@ -301,26 +305,55 @@ class Galerie
     }
 
     /**
-     * Set image
+     * Add images
      *
-     * @param \Julie\PlatformBundle\Entity\Image $image
+     * @param \Julie\PlatformBundle\Entity\Image $images
      *
      * @return Galerie
      */
-    public function setImage(\Julie\PlatformBundle\Entity\Image $image = null)
+    public function addImage(\Julie\PlatformBundle\Entity\Image $images)
     {
-        $this->image = $image;
+        $this->images[] = $images;
+        $images->setGalerie($this);
 
         return $this;
     }
 
     /**
-     * Get image
+     * Set image
      *
-     * @return \Julie\PlatformBundle\Entity\Image
+     * @param \Julie\PlatformBundle\Entity\Image $images
+     *
+     * @return Galerie
      */
-    public function getImage()
+    public function setImages(ArrayCollection $images)
     {
-        return $this->image;
+        foreach ($images as $image){
+            $image->setGalerie($this);
+        }
+        $this->images = $images;
+
+        return $this;
+    }
+
+
+    /**
+     * Remove images
+     *
+     * @param \Julie\PlatformBundle\Entity\Image $images
+     */
+    public function removeImage(\Julie\PlatformBundle\Entity\Image $images)
+    {
+        $this->images->removeElement($images);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }
