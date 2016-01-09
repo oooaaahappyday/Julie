@@ -3,8 +3,10 @@
 namespace Julie\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use symfony\Component\Validator\Constraints as Assert;
+use Julie\PlatformBundle\Entity\Galerie;
 
 /**
  *Image
@@ -47,19 +49,13 @@ class Image
     
 
     /**
-    * @ORM\ManyToOne(targetEntity="Galerie", inversedBy="images")
-    * @ORM\JoinColumn(name="galerie_id", referencedColumnName="id")
-    */
-    private $galerie;
-    /**
-     * @Assert\Image(
-     *     minWidth = 200,
-     *     maxWidth = 400,
-     *     minHeight = 200,
-     *     maxHeight = 400
-     * )
+     * @ORM\ManyToOne(targetEntity="Galerie", inversedBy="images")
+     * @ORM\JoinColumn(name="galerie_id", referencedColumnName="id")
      */
-    public $file;
+    private $galerie;
+
+    
+    protected $file;
 
     private $tempFilename;
 

@@ -28,6 +28,7 @@ class Galerie
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     * @Assert\Length(min=2)
      */
     private $nom;
 
@@ -74,11 +75,10 @@ class Galerie
     private $categorie;
 
     /**
-    * @ORM\OneToMany(targetEntity="Image", mappedBy="galerie", cascade={"persist", "remove"})
-    * @Assert\Valid()
-    */
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="galerie", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
     private $images;
-
 
     public function __construct()
     {
