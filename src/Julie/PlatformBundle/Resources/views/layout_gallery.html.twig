@@ -24,97 +24,99 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<div class="navbar-brand" href="#">Julie Franchet</div>
+				<div class="navbar-brand" href="#">Julie Franchet
+				</div>
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="active"><a href="/Julie/web/app_dev.php/home">Home</a></li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportage <b class="caret"></b></a>
-							
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportage <b class="caret"></b></a>							
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Art
 								<b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Lightpainting</a></li>
-								</ul>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Studio
-									<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Lightpainting</a></li>
+									</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Studio
+								<b class="caret"></b></a>
 									<ul class="dropdown-menu">
 										<li><a href="#">SKEMA</a></li>
 									</ul>
-								</li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Vidéo
-										<b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li><a href="#">Rallye</a></li>
-										</ul>
-									</li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Souvenir
-											<b class="caret"></b></a>
-											<ul class="dropdown-menu">
-												<li><a href="#">Action</a></li>
-											</ul>
-										</li>
-										{#<li><a href="{{ path('JuLie_PlatformBundle_about') }}">About</a></li>#}
-										<li><a href="/Julie/web/app_dev.php/contact">Contact</a></li>
-										<li><a href="/Julie/web/app_dev.php/login">Login</a></li>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Vidéo
+								<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Rallye</a></li>
 									</ul>
-								</div> <!--/.nav-collapse -->
-							</div> <!-- div container -->
-						</div> <!-- div tnavbar -->
-						<div>
-							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-							{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-							<a href="{{ path('fos_user_security_logout') }}" class="btn btn-default" role="button">
-								{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-							</a>
-							<a href="/Julie/web/app_dev.php/NouvelleGalerie" class="btn btn-default" role="button">Nouvelle Galerie</a>
-							{% else %}
-							{#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
-							{% endif %}
-						</div>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Souvenir
+								<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Action</a></li>
+									</ul>
+						</li>
+						{#<li><a href="{{ path('JuLie_PlatformBundle_about') }}">About</a></li>#}
+						<li><a href="/Julie/web/app_dev.php/contact">Contact</a></li>
+						<li><a href="/Julie/web/app_dev.php/login">Login</a></li>
+					</ul>
+				</div> <!--/.nav-collapse -->
+			</div> <!-- div container -->
+		</div> <!-- div tnavbar -->
+		<div>
+			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+			<a href="{{ path('fos_user_security_logout') }}" class="btn btn-default" role="button">
+				{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+			</a>
+			<a href="/Julie/web/app_dev.php/NouvelleGalerie" class="btn btn-default" role="button">Nouvelle Galerie</a>
+			{% else %}
+			{#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+			{% endif %}
+		</div>
+		{# Show messages flash #}
+		{% if app.request.hasPreviousSession %}
+		{% for type, messages in app.session.flashbag.all() %}
+		{% for message in messages %}
 
-						{% if app.request.hasPreviousSession %}
-						{% for type, messages in app.session.flashbag.all() %}
-						{% for message in messages %}
-						<div class="flash-{{ type }}">
-							{{ message }}
-						</div>
-						{% endfor %}
-						{% endfor %}
-						{% endif %}
+		<div class="flash-{{ type }}">
+			{{ message }}
+		</div>
+		{% endfor %}
+		{% endfor %}
+		{% endif %}
 
-						<div id="fos_user">
-							{% block fos_user_content %}
-							{% endblock fos_user_content %}
-						</div>
-						<div class="row">
-							<div class="col-xs-4 col-sm-3 col-md-2 col-lg-2">
-								<div id="left_side">
-									{% block left_side %}
-									{% endblock left_side %}
-								</div>
-							</div>
-							<div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
-								<div id="right_side">
-									{% block right_side %}
-									{% endblock right_side %}
-								</div>
-							</div>
-						</div> <!-- div class row -->
-					</div> <!-- div container-fluid -->
+		{# UserBundle #}
+		<div id="fos_user">
+			{% block fos_user_content %}
+			{% endblock fos_user_content %}
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-sm-3 col-md-2 col-lg-2">
+				<div id="left_side">
+					{% block left_side %}
+					{% endblock left_side %}
+				</div>
+			</div>
+			<div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
+				<div id="right_side">
+					{% block right_side %}
+					{% endblock right_side %}
+				</div>
+			</div>
+		</div> <!-- div class row -->
+	</div> <!-- div container-fluid -->
 
-					<script type="text/Javascript" src="{{ asset('/js/jquery-1.11.1.js')}}"></script>
-					<script type="text/Javascript" src="{{ asset('/js/bootstrap.min.js')}}"></script>
-				</body>
-				<footer>
-					{% block footer %}
-					{% endblock footer %}
-				</footer>
-				</html>
+	<script type="text/Javascript" src="{{ asset('/js/jquery-1.11.1.js')}}"></script>
+	<script type="text/Javascript" src="{{ asset('/js/bootstrap.min.js')}}"></script>
+</body>
+<footer>
+	{% block footer %}
+	{% endblock footer %}
+</footer>
+</html>

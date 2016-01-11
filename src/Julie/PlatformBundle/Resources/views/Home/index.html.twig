@@ -2,28 +2,30 @@
 
 {% block title %} {{parent() }} - Index{% endblock %}
 
-	{% block right_side %}
-		<div class="container-fluid">
-			<div class="flex-container">
-				<div class="flexslider">
-					<ul class="slides">
+{% block right_side %}
+	<div class="container-fluid">
+		<div class="flex-container">
+			<div class="flexslider">
+				<ul class="slides">
 
-						<li>
-							<img src="../img/IMG_12.jpg"/>	
-						</li>
-						<li>
-							<img src="../img/IMG_13.jpg"/>	
-						</li>
-						<li>
-							<img src="../img/IMG_15.jpg"/>	
-						</li>
+					<li>
+						<img src="../img/IMG_12.jpg"/>	
+					</li>
+					<li>
+						<img src="../img/IMG_13.jpg"/>	
+					</li>
+					<li>
+						<img src="../img/IMG_15.jpg"/>	
+					</li>
 
-					</ul>
-				</div>
+				</ul>
 			</div>
 		</div>
-	{% endblock right_side %}
+	</div>
+{% endblock right_side %}
 
-	{% block footer %}
-		<p>FOOTER</p>
-	{% endblock footer %}
+{% block footer %}
+	<p>
+		FOOTER
+	</p>
+{% endblock footer %}

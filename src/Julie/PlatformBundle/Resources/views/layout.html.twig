@@ -34,15 +34,14 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportage <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-							  
-								<?php if(count($listCategories) > 0) {
-								  foreach($listCategories as $categorie) {
-								    echo '<li>'.$categorie->getNom().'</li>';
-								  }
-								} else { ?>
-								  <li>Pas d'utilisateur trouvé.</li>
-								<?php } ?>
 
+								<?php if(count($listCategories) > 0) {
+									foreach($listCategories as $categorie) {
+										echo '<li>'.$categorie->getNom().'</li>';
+									}
+								} else { ?>
+								<li>Pas d'utilisateur trouvé.</li>
+								<?php } ?>
 							</ul>
 						</li>
 						<li class="dropdown">
@@ -51,110 +50,108 @@
 								<ul class="dropdown-menu">
 									<li><a href="#">Lightpainting</a></li>
 								</ul>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Studio
-									<b class="caret"></b></a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Studio
+								<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">SKEMA</a></li>
+								</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Vidéo
+								<b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><a href="#">SKEMA</a></li>
+										<li><a href="#">Rallye</a></li>
 									</ul>
-								</li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Vidéo
-										<b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li><a href="#">Rallye</a></li>
-										</ul>
-									</li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Souvenir
-											<b class="caret"></b></a>
-											<ul class="dropdown-menu">
-												<li><a href="#">Action</a></li>
-											</ul>
-										</li>
-										{#<li><a href="{{ path('JuLie_PlatformBundle_about') }}">About</a></li>#}
-										<li><a href="/Julie/web/app_dev.php/contact">Contact</a></li>
-										<li><a href="/Julie/web/app_dev.php/login">Login</a></li>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Souvenir
+								<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Action</a></li>
 									</ul>
-								</div> <!--/.nav-collapse -->
-							</div> <!-- div container -->
-						</div> <!-- div tnavbar -->
+						</li>
+						{#<li><a href="{{ path('JuLie_PlatformBundle_about') }}">About</a></li>#}
+						<li><a href="/Julie/web/app_dev.php/contact">Contact</a></li>
+						<li><a href="/Julie/web/app_dev.php/login">Login</a></li>
+					</ul>
+				</div> <!--/.nav-collapse -->
+			</div> <!-- div container -->
+		</div> <!-- div tnavbar -->
 
-						<div id="authentication">
-							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-								{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-								<a href="{{ path('fos_user_security_logout') }}" class="btn btn-default" role="button">
-									{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-								</a>
-								<a href="/Julie/web/app_dev.php/NouvelleGalerie" class="btn btn-default" role="button">Nouvelle Galerie</a>
-								{% else %}
-								{#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
-							{% endif %}
+		<div id="authentication">
+			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+				{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+				<a href="{{ path('fos_user_security_logout') }}" class="btn btn-default" role="button">
+					{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+				</a>
+				<a href="/Julie/web/app_dev.php/NouvelleGalerie" class="btn btn-default" role="button">Nouvelle Galerie</a>
+				{% else %}
+				{#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+			{% endif %}
+		</div>
+			{% if app.request.hasPreviousSession %}
+				{% for type, messages in app.session.flashbag.all() %}
+					{% for message in messages %}
+						<div class="flash-{{ type }}">
+							{{ message }}
 						</div>
+					{% endfor %}
+				{% endfor %}
+			{% endif %}
 
-						{% if app.request.hasPreviousSession %}
-							{% for type, messages in app.session.flashbag.all() %}
-								{% for message in messages %}
-									<div class="flash-{{ type }}">
-										{{ message }}
-									</div>
-								{% endfor %}
-							{% endfor %}
-						{% endif %}
+			<div>
+				{% block fos_user_content %}
+				{% endblock fos_user_content %}
+			</div>
+			<div>
+				<canvas id="banniere" width="3000" height="70"></canvas>
+				<script>
+				var canvas = document.getElementById('banniere');
+				var ctx = canvas.getContext('2d');
+				var numberOfLines = 5;
+				var i = 0;
+				var cycle = function() {
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+					for(var j=0; j<numberOfLines; ++j) {
+						ctx.lineWidth = 1+2*(numberOfLines-j);
+						ctx.strokeStyle = 'rgba(100,200,'+Math.floor(Math.abs(Math.cos(i/80)*256))+','+(j/5+0.1)+')';
+						var offset = (i+j*10*Math.abs(Math.cos(i/100)))/20;
+						var y = (Math.sin(offset)+1)*canvas.height/2;
+						var cpy1 = (Math.cos(offset)+0.5)*canvas.height;
+						var cpy2 = canvas.height - cpy1;
+						ctx.beginPath();
+						ctx.moveTo(0, y);
+						ctx.bezierCurveTo(canvas.width/3, cpy1, 2*canvas.width/3, cpy2, canvas.width, y);
+						ctx.stroke();
+					}
+					i++;
+				};
+				setInterval(cycle, 30);
+				</script>
+			</div>
+			<div>
+				{% block right_side %}
+				{% endblock right_side %}
+			</div>
+			<div>
+				{% block footer %}
+				{% endblock footer %}
+			</div>
+	</div> <!-- div container-fluid -->
 
-						<div>
-							{% block fos_user_content %}
-							{% endblock fos_user_content %}
-						</div>
-						<div>
-							<canvas id="banniere" width="3000" height="70"></canvas>
-							<script>
-								var canvas = document.getElementById('banniere');
-								var ctx = canvas.getContext('2d');
-								var numberOfLines = 5;
-								var i = 0;
-								var cycle = function() {
-								  ctx.clearRect(0, 0, canvas.width, canvas.height);
-								  for(var j=0; j<numberOfLines; ++j) {
-								    ctx.lineWidth = 1+2*(numberOfLines-j);
-								    ctx.strokeStyle = 'rgba(100,200,'+Math.floor(Math.abs(Math.cos(i/80)*256))+','+(j/5+0.1)+')';
-								    var offset = (i+j*10*Math.abs(Math.cos(i/100)))/20;
-								    var y = (Math.sin(offset)+1)*canvas.height/2;
-								    var cpy1 = (Math.cos(offset)+0.5)*canvas.height;
-								    var cpy2 = canvas.height - cpy1;
-								    ctx.beginPath();
-								    ctx.moveTo(0, y);
-								    ctx.bezierCurveTo(canvas.width/3, cpy1, 2*canvas.width/3, cpy2, canvas.width, y);
-								    ctx.stroke();
-								  }
-								  i++;
-								};
-								setInterval(cycle, 30);
-							</script>
-						</div>
-						<div>
-							{% block right_side %}
-							{% endblock right_side %}
-						</div>
-						<div>
-							{% block footer %}
-							{% endblock footer %}
-						</div>
-					</div> <!-- div container-fluid -->
-
-					<script type="text/Javascript" src="{{ asset('/js/jquery-1.11.1.js')}}"></script>
-					<script type="text/Javascript" src="{{ asset('/js/bootstrap.min.js')}}"></script>
-					<script type="text/Javascript" src="{{ asset('/js/jquery.flexslider-min.js')}}"></script>
-					<script type="text/Javascript" src="{{ asset('/js/jquery.flexslider.js')}}"></script>
-					<script type="text/javascript" charset="utf-8">
-					
-					$(window).load(function() {
-					  $('.flexslider').flexslider({
-					    animation: "fade"
-					  });
-					});
-					</script>
+	<script type="text/Javascript" src="{{ asset('/js/jquery-1.11.1.js')}}"></script>
+	<script type="text/Javascript" src="{{ asset('/js/bootstrap.min.js')}}"></script>
+	<script type="text/Javascript" src="{{ asset('/js/jquery.flexslider-min.js')}}"></script>
+	<script type="text/Javascript" src="{{ asset('/js/jquery.flexslider.js')}}"></script>
+	<script type="text/javascript" charset="utf-8">				
+	$(window).load(function() {
+		$('.flexslider').flexslider({
+			animation: "fade"
+		});
+	});
+	</script>
 
 </body>
 </html>

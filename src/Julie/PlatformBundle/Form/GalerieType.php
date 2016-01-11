@@ -35,6 +35,7 @@ class GalerieType extends AbstractType
                 'type'          => new ImageType(),
                 'prototype'     => true,
                 'allow_add'     => true,
+                'allow_delete'  => true,
                 'by_reference'  => false
                 ))
             ->add('enregistrer','submit')
