@@ -2,9 +2,9 @@
 parameters:
     database_host: 127.0.0.1
     database_port: null
-    database_name: boisse_j
-    database_user: boisse_j
-    database_password: 'ProM1dpJo*'
+    database_name: codingidentifier
+    database_user: codingidentifier
+    database_password: 'usualmdp'
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
