@@ -16,6 +16,7 @@ class HomeController extends Controller
 		->get('templating')
 		->render('JuliePlatformBundle:Home:index.html.twig', array(
 			'name' => 'Julie'
+			
 			)
 		);
 		return new Response($content);
@@ -43,5 +44,13 @@ class HomeController extends Controller
 		return new Response($content);
 	}
 
-	
+	public function menuAction()
+	{
+		$repository = $this
+		->getDoctrine()
+		->getManager()
+		->getRepository('JuliePlatformBundle:Galerie')
+		;
+		$listGaleries = $repository->findAll();
+	}
 }

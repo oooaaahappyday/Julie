@@ -9,5 +9,4 @@ namespace Julie\PlatformBundle\Entity;
  * repository methods below.
  */
 class CategorieRepository extends \Doctrine\ORM\EntityRepository
-{
-}
+{}

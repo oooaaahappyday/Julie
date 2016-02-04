@@ -49,4 +49,9 @@ class GaleriesController extends Controller
 		  'listCategories' => $listCategories
 		));
 	}
+
+	public function showGalerieAction()
+	{
+		
+	}
 }

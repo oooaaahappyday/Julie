@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Julie\PlatformBundle\JuliePlatformBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Julie\UserBundle\JulieUserBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

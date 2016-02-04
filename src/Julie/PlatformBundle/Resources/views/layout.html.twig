@@ -34,42 +34,36 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportage <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-
-								<?php if(count($listCategories) > 0) {
-									foreach($listCategories as $categorie) {
-										echo '<li>'.$categorie->getNom().'</li>';
-									}
-								} else { ?>
-								<li>Pas d'utilisateur trouvé.</li>
-								<?php } ?>
+								{{ knp_menu_render('reportage') }}
 							</ul>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Art
 								<b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="#">Lightpainting</a></li>
+									{{ knp_menu_render('art') }}
+
 								</ul>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Studio
 								<b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="#">SKEMA</a></li>
+									{{ knp_menu_render('studio') }}
 								</ul>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Vidéo
 								<b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><a href="#">Rallye</a></li>
+										{{ knp_menu_render('video') }}
 									</ul>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Souvenir
 								<b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><a href="#">Action</a></li>
+										{{ knp_menu_render('souvenir') }}
 									</ul>
 						</li>
 						{#<li><a href="{{ path('JuLie_PlatformBundle_about') }}">About</a></li>#}
@@ -79,6 +73,8 @@
 				</div> <!--/.nav-collapse -->
 			</div> <!-- div container -->
 		</div> <!-- div tnavbar -->
+
+
 
 		<div id="authentication">
 			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -110,7 +106,7 @@
 				<script>
 				var canvas = document.getElementById('banniere');
 				var ctx = canvas.getContext('2d');
-				var numberOfLines = 5;
+				var numberOfLines = 4;
 				var i = 0;
 				var cycle = function() {
 					ctx.clearRect(0, 0, canvas.width, canvas.height);

@@ -1,5 +1,5 @@
 Home_page_Julie:
-    path:     /home
+    path:     /
     defaults: { _controller: JuliePlatformBundle:Home:index }
 
 About:

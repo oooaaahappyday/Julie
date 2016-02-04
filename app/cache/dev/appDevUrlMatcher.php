@@ -128,7 +128,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // Home_page_Julie
-        if ($pathinfo === '/home') {
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'Home_page_Julie');
+            }
+
             return array (  '_controller' => 'Julie\\PlatformBundle\\Controller\\HomeController::indexAction',  '_route' => 'Home_page_Julie',);
         }
 
@@ -331,11 +335,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         not_fos_user_change_password:
 
         // home
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'home');
-            }
-
+        if ($pathinfo === '/home') {
             return array (  '_controller' => 'Julie\\PlatformBundle\\Controller\\HomeController::indexAction',  '_route' => 'home',);
         }
 

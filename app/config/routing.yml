@@ -23,6 +23,6 @@ fos_user_change_password:
     prefix: /profile
 
 home:
-    path:  /
+    path:  /home
     defaults: { _controller: JuliePlatformBundle:Home:index }
 

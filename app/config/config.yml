@@ -93,3 +93,10 @@ fos_user:
     db_driver:     orm
     firewall_name: main
     user_class:    Julie\UserBundle\Entity\User
+
+# Menu bundle
+knp_menu:
+    twig:
+        template: knp_menu.html.twig
+    templating: false
+    default_renderer: twig
