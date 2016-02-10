@@ -11,6 +11,7 @@ use Julie\PlatformBundle\Entity\Image;
  * Galerie
  *
  * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Julie\PlatformBundle\Entity\GalerieRepository")
  * @ORM\Entity
  */
 class Galerie
@@ -301,7 +302,7 @@ class Galerie
     */
     public function __toString()
     {
-        return $this->materiel;
+        return $this->nom;
     }
 
     /**

@@ -40,13 +40,14 @@ class MenuBuilder
 					));
 		}
 		
-
+// Il faudra chercher un moyen un peu plus DRY pour implanter cette navbar dynamique
 		return $menu;
 	}
 
 	public function createReportageMenu()
 	{
 		$menu = $this->factory->createItem('root');
+		
 
 		// get list from db
 		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(array('categorie' => 'reportage'));
@@ -56,7 +57,8 @@ class MenuBuilder
 			$menu->addChild(
 				'galerie_' . $galerie->getId(), array(
 					'label' => $galerie->getNom(),
-					'route' => 'Contact'
+					'route' => 'Galerie_show',
+					'routeParameters' => array('id' => $galerie->getId())
 					));
 		}
 		
@@ -76,7 +78,8 @@ class MenuBuilder
 			$menu->addChild(
 				'galerie_' . $galerie->getId(), array(
 					'label' => $galerie->getNom(),
-					'route' => 'Contact'
+					'route' => 'Galerie_show',
+					'routeParameters' => array('id' => $galerie->getId())
 					));
 		}
 		
@@ -96,7 +99,8 @@ class MenuBuilder
 			$menu->addChild(
 				'galerie_' . $galerie->getId(), array(
 					'label' => $galerie->getNom(),
-					'route' => 'Contact'
+					'route' => 'Galerie_show',
+					'routeParameters' => array('id' => $galerie->getId())
 					));
 		}
 		
@@ -116,7 +120,8 @@ class MenuBuilder
 			$menu->addChild(
 				'galerie_' . $galerie->getId(), array(
 					'label' => $galerie->getNom(),
-					'route' => 'Contact'
+					'route' => 'Galerie_show',
+					'routeParameters' => array('id' => $galerie->getId())
 					));
 		}
 		
@@ -136,7 +141,8 @@ class MenuBuilder
 			$menu->addChild(
 				'galerie_' . $galerie->getId(), array(
 					'label' => $galerie->getNom(),
-					'route' => 'Contact'
+					'route' => 'Galerie_show',
+					'routeParameters' => array('id' => $galerie->getId())
 					));
 		}
 		
