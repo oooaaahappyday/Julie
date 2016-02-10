@@ -13,3 +13,9 @@ Contact:
 NouvelleGalerie:
     path:     /NouvelleGalerie
     defaults: { _controller: JuliePlatformBundle:Galeries:NouvelleGalerie }
+
+Galerie_show:
+    path:     /galerie/{id}
+    defaults: { _controller: JuliePlatformBundle:Galeries:showGalerie }
+    requirements:
+        id:   \d+

@@ -46,18 +46,26 @@ class Image
      * @ORM\Column(name="titre", type="string", length=255)
      */
     private $titre;
-    
 
     /**
-     * @ORM\ManyToOne(targetEntity="Galerie", inversedBy="images")
+     * @var Galerie  //traité comme un objet, règle le problème de "mappings Image/Galerie non consistent"
+     *
+     * @ORM\ManyToOne(targetEntity="Galerie", inversedBy="images", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="galerie_id", referencedColumnName="id")
      */
     private $galerie;
 
-    
     protected $file;
 
     private $tempFilename;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="webPath", type="string", length=255)
+     */
+    protected $webPath;
+
 
     public function getFile()
     {
@@ -91,6 +99,7 @@ class Image
         $this->extension = $this->file->guessExtension();
         // generate filename attribute of <img> with original file's name
         $this->filename = $this->file->getClientOriginalName();
+        $this->webPath = $this->getWebPath();
     }
 
     /**
@@ -114,6 +123,7 @@ class Image
         $this->file->move(
             $this->getUploadRootDir(), // destination directory
             $this->id.'.'.$this->extension   // filename to create (id.extension)
+            
         );   
     }
 
@@ -141,7 +151,7 @@ class Image
     public function getUploadDir()
     {
         // return the relative path to the file (relative to /web)
-        return 'uploads/img';
+        return 'uploads/img/' . $this->getGalerie();
     }
 
     protected function getUploadRootDir()
@@ -152,7 +162,13 @@ class Image
 
     public function getWebPath()
     {
-        return $this->getUploadDir().'/'.$this->getId().'.'.$this->getExtension();
+        return $this->getUploadDir() . '/' . $this->getId() . '.' . $this->getExtension();
+    }
+
+    public function setWebPath()
+    {
+        $this->webPath = $this->getUploadDir().'/'.$this->getId().'.'.$this->getExtension();
+        return $this;
     }
 
     /**

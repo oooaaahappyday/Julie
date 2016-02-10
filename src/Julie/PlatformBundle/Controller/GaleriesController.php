@@ -8,6 +8,7 @@ use Julie\PlatformBundle\Entity\CategorieRepository;
 use Julie\PlatformBundle\Form\GalerieType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class GaleriesController extends Controller
 {
@@ -33,25 +34,23 @@ class GaleriesController extends Controller
 		));
 	}
 
-	public function listCategoriesAction()
+	
+
+	
+	public function showGalerieAction($id)
 	{
-		$repository = $this
+		$imageRepository = $this
 		->getDoctrine()
 		->getManager()
-		->getRepository('JuliePlatformBundle:Categorie');
+		->getRepository('JuliePlatformBundle:Image');
 
-		$listCategories = $repository->findAll();
-
-		foreach ($listCategories as $categorie) {
-			echo $categorie->getNom();
-		}
-		return $this->render('juliePlatformBundle:Categorie:index.html.twig', array(
-		  'listCategories' => $listCategories
-		));
-	}
-
-	public function showGalerieAction()
-	{
+		$listImage = $imageRepository->findBy(array('galerie' => $id));
+		$dirImage = glob('Julie/web/uploads/img/canon/' );
 		
+
+		
+		return  $this->render('JuliePlatformBundle:Galeries:galerie.html.twig',
+			array('id' => $id, 'listImage' => $listImage, 'dirImage' => $dirImage
+			));
 	}
 }
