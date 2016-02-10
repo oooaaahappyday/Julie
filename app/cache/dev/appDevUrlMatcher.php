@@ -151,6 +151,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Julie\\PlatformBundle\\Controller\\GaleriesController::NouvelleGalerieAction',  '_route' => 'NouvelleGalerie',);
         }
 
+        // Galerie_show
+        if (0 === strpos($pathinfo, '/galerie') && preg_match('#^/galerie/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'Galerie_show')), array (  '_controller' => 'Julie\\PlatformBundle\\Controller\\GaleriesController::showGalerieAction',));
+        }
+
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
                 // fos_user_security_login
