@@ -1,23 +1,24 @@
 {% extends "JuliePlatformBundle::layout_gallery.html.twig" %}
 
-{% block title %} {{parent() }} - Reportage{% endblock %}
-
 {% block left_side %}
 	
-	
+	{% for image in listImage %}
+		<div class="container-fluid">
+			<div class="galerie">
+					<ul>
+						<li>{{ image.titre|title }}</li>
+						<li>{{ image.galerie}}</li>
+						<li>{{ image.filename }}</li>
+						{# <img src="{{ asset ( ''~ image.webPath ) }}"/>
+						  <li>{{ image.extension }}</li>
+			  			<li>{{ image.id}}</li>
+							<li>{{ image.webPath }}</li> #}
+					</ul>
+			</div>
+		</div>		
+	{% endfor %}	
 {% endblock left_side %}
 
 
 {% block right_side %}
-		{% for image in listImage %}
-				<ul>
-						<img src="{{ asset ( ''~ image.webPath ) }}"/>
-						<li>{{ image.titre }}</li>
-						<li>{{ image.galerie}}</li>
-						<li>{{ image.filename }}</li>
-						{# <li>{{ image.extension }}</li>
-			  			 <li>{{ image.id}}</li>
-							 <li>{{ image.webPath }}</li> #}
-				</ul>
-		{% endfor %}
 {% endblock right_side %}

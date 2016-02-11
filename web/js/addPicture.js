@@ -1,6 +1,5 @@
 // Script Javascript: image upload in the NewGalery Form
 
-
 $(document).ready(function(){
 	// get div with data-prototype attribute
 	var $container = $('div#julie_platformbundle_galerie_images');

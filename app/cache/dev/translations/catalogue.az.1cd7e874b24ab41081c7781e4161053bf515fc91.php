@@ -255,7 +255,7 @@ the Team.
     'layout.logout' => 'Log out',
     'layout.login' => 'Log in',
     'layout.register' => 'Register',
-    'layout.logged_in_as' => 'Logged in as %username%',
+    'layout.logged_in_as' => 'Hello %username%! ^^',
     'form.group_name' => 'Group name',
     'form.username' => 'Username',
     'form.email' => 'Email',
