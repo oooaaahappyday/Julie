@@ -1,0 +1,73 @@
+<div class"well">
+		{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+		{{ form_errors(form) }}
+
+		<div class="form-group"> {# Nom galerie #}
+			{{ form_label(form.nom, "Titre Galerie", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+			{{ form_errors(form.nom) }}
+			<div class="col-sm-4">
+				{{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+			</div>
+		</div>
+
+		<div class="form-group"> {# Pays #}
+			{{ form_label(form.pays, "Pays", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+			{{ form_errors(form.pays) }}
+			<div class="col-sm-4">
+				{{ form_widget(form.pays, {'attr': {'class': 'form-control'}}) }}
+			</div>
+		</div>
+
+		<div class="form-group"> {# Lieux #}
+			{{ form_label(form.lieux, "Lieux", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+			{{ form_errors(form.lieux) }}
+			<div class="col-sm-4">
+				{{ form_widget(form.lieux, {'attr': {'class': 'form-control'}}) }}
+			</div>
+		</div>
+
+		<div class="form-group"> {# Materiel #}
+			{{ form_label(form.materiel, "Materiel", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+			{{ form_errors(form.materiel) }}
+			<div class="col-sm-4">
+				{{ form_widget(form.materiel, {'attr': {'class': 'form-control'}}) }}
+			</div>
+		</div>
+
+		<div class="form-group"> {# Catégorie #}
+			{{ form_label(form.categorie, "Catégorie", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+			{{ form_errors(form.categorie) }}
+			<div class="col-sm-4">
+				{{ form_widget(form.categorie, {'attr': {'class': 'form-control'}}) }}
+			</div>
+		</div>
+
+		<div class="form-group"> {# Date #}
+			{{ form_label(form.date, "Date", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+			{{ form_errors(form.date) }}
+			<div class="col-sm-4">
+				{{ form_widget(form.date) }}
+			</div>
+		</div>
+		
+		<div class="form-group"> {# Photographies #}
+			{{ form_label(form.images, "Photographies", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+			{{ form_errors(form.images) }}
+			<div class="col-sm-4">
+				{{ form_widget(form.images, {'attr': {'class': 'form-horizontal'}}) }}
+			</div>
+		</div> 
+
+		<div class="form-group"> {# Bouton Enregistrer #}
+			<div class="col-sm-4 col-sm-offset-3">
+				{{ form_widget(form.enregistrer, {'attr': {'class': 'btn btn-primary'}}) }}
+			</div>
+		</div>
+
+
+				{# Script jquery d'upload des photos de la nouvelle galerie #}
+				<script type="text/Javascript" src="{{ asset('/js/jquery-1.11.1.js')}}"></script>
+				<script type="text/Javascript" src="{{ asset('/js/addPicture.js')}}"></script>
+		{{ form_rest(form) }}
+		{{ form_end(form) }}
+</div>
