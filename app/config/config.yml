@@ -40,8 +40,8 @@ twig:
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    use_controller: false
-    bundles:        [ ]
+    use_controller: '%kernel.debug%'
+    bundles:        [ JuliePlatformBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -100,3 +100,10 @@ knp_menu:
         template: knp_menu.html.twig
     templating: false
     default_renderer: twig
+
+# Doctrine Migrations
+doctrine_migrations:
+    dir_name: %kernel.root_dir%/migrations
+    namespace: Migrations
+    table_name: migration_versions
+    name: Julie Migrations

@@ -9,9 +9,14 @@
 			</button>
 			<div class="navbar-brand" href="#">Julie Franchet</div>
 		</div>
+
+
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="/Julie/web/app_dev.php/home">Home</a></li>
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+						<li><a href="{{ path('NouvelleGalerie') }}" role="button">Nouvelle Galerie</a></li>
+				{% endif %}
+				<li class="active"><a href="{{ path ('Home_page_Julie') }}">Home</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportage <b class="caret"></b></a>
 						<ul class="dropdown-menu">
@@ -46,9 +51,15 @@
 							{{ knp_menu_render('souvenir') }}
 						</ul>
 				</li>
-						{#<li><a href="{{ path('JuLie_PlatformBundle_about') }}">About</a></li>#}
-				<li><a href="/Julie/web/app_dev.php/contact">Contact</a></li>
-				<li><a href="/Julie/web/app_dev.php/login">Login</a></li>
+				<li><a href="{{ path('About') }}">About</a></li>
+				<li><a href="{{ path('Contact') }}">Contact</a></li>
+				<li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+						<li><a href="{{ path('fos_user_security_logout') }}" role="button">
+							{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+						</a></li>
+				{% endif %}
+				
 			</ul>
 		</div> <!--/.nav-collapse -->
 	</div> <!-- div container -->

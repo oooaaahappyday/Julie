@@ -36,7 +36,8 @@ class GalerieType extends AbstractType
                 'prototype'     => true,
                 'allow_add'     => true,
                 'allow_delete'  => true,
-                'by_reference'  => false
+                'by_reference'  => false,
+                'required'      => false
                 ))
             ->add('enregistrer','submit')
         ;
@@ -58,5 +59,15 @@ class GalerieType extends AbstractType
     public function getName()
     {
         return 'julie_platformbundle_galerie';
+    }
+
+    public function addImage(Image $image)
+    {
+        $this->images->add($image);
+    }
+
+    public function removeImage(Image $image)
+    {
+        $this->images->removeElement($image);
     }
 }

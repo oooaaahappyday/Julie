@@ -3,85 +3,68 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"/>
 	<title>Julie Franchet</title>
 
 	{% block stylesheets %}
-		<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"/>
-		<link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}"/>
-		<link rel="stylesheet" href="{{ asset('css/main.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/flexslider.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('css/main.css') }}">
+	<link rel="stylesheet" href="{{ asset('Flexslider/flexslider.css') }}">
 	{% endblock %}
 
 
 </head>
-{% block body%}
 <!-- <body onload="resizeCanvas();"> -->
 <body>
+	
 	<div class="container-fluid">
 
-		{# NAVBAR TEMPLATE #}
+{# NAVBAR TEMPLATE #}
 		{% include "JuliePlatformBundle::Navbar/navBar.html.twig" %}
 
-<!-- JAVASCRIPT BANNER 
-			<div>
-				<canvas id="banniere"></canvas>
-			</div> -->
-			
-		{# AUTHENTICATION #}
-		<div id="authentication">
-			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-				<a href="{{ path('fos_user_security_logout') }}" class="btn btn-default" role="button">
-					{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-				</a>
-				<a href="/Julie/web/app_dev.php/NouvelleGalerie" class="btn btn-default" role="button">Nouvelle Galerie</a>
-				|
-				{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} 
-				{% else %}
-				{#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
-			{% endif %}
+{# JAVASCRIPT BANNER #}
+		<!-- 
+		<div>
+			<canvas id="banniere"></canvas>
 		</div>
-			{% if app.request.hasPreviousSession %}
-				{% for type, messages in app.session.flashbag.all() %}
-					{% for message in messages %}
-						<div class="flash-{{ type }}">
-							{{ message }}
-						</div>
-					{% endfor %}
-				{% endfor %}
-			{% endif %}
+		-->
 
+{# AUTHENTICATION #}
+		<div id="authentication">
+			{% if app.request.hasPreviousSession %}
+			{% for type, messages in app.session.flashbag.all() %}
+			{% for message in messages %}
+			<div class="flash-{{ type }}">
+				{{ message }}
+			</div>
+			{% endfor %}
+			{% endfor %}
+			{% endif %}
 			<div>
 				{% block fos_user_content %}
-				{% endblock fos_user_content %}
+				{% endblock %}
 			</div>
-
-			
-			<div>
-				{% block right_side %}
-				{% endblock right_side %}
-			</div>
-			<div>
-				{% block footer %}
-				{% endblock footer %}
-			</div>
+		</div>
+{# FLEXSLIDER #}
+		
+		{% block flexslider %}
+		{% endblock flexslider %}
+		
+{% block body %}
+{% endblock body %}
 	</div> <!-- div container-fluid -->
 
+{# JAVASCRIPT #}
+{% block javascript %}
 	<script type="text/Javascript" src="{{ asset('/js/jquery-1.11.1.js')}}"></script>
-	<script type="text/Javascript" src="{{ asset('/js/bootstrap.min.js')}}"></script>
-	<script type="text/Javascript" src="{{ asset('/js/jquery.flexslider-min.js')}}"></script>
-	<script type="text/Javascript" src="{{ asset('/js/jquery.flexslider.js')}}"></script>
-	<script type="text/javascript" src="{{ asset('/js/resizeCanvas.js')}}"></script>
-	<!-- test bannière -->
-	<!-- <script type="text/javascript" src="{{ asset('/js/banniere.js')}}"></script> -->
-	<script type="text/javascript" charset="utf-8">				
-	$(window).load(function() {
-		$('.flexslider').flexslider({
-			animation: "fade"
-		});
-	});
-	</script>
+	<script type="text/Javascript" src="{{ asset('js/bootstrap.min.js')}}"></script>
+	<script type="text/Javascript" src="{{ asset('Flexslider/jquery.flexslider-min.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('js/resizeCanvas.js')}}"></script>
+{% endblock javascript %}
+
+<!-- test bannière -->
+{# <script type="text/javascript" src="{{ asset('/js/banniere.js')}}"></script> #}
 
 </body>
-{% endblock %}
 </html>

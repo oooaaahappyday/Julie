@@ -1,14 +1,32 @@
+parameters:
+        julie_user_bundle.component.authentication.handler.login_success_handler.class: Julie\UserBundle\Component\Authentication\Handler\LoginSuccessHandler
+
 services:
 #    julie_platform.example:
 #        class: Julie\PlatformBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
-    julie_platform.menu_builder:
-        class:						Julie\PlatformBundle\Menu\MenuBuilder
-        arguments:				['@knp_menu.factory', '@doctrine.orm.entity_manager']
 
-    julie_platform.menu.main:
+    julie_platform_bundle.menu_builder:
+        class:						Julie\PlatformBundle\Menu\MenuBuilder
+        arguments:					['@knp_menu.factory', '@doctrine.orm.entity_manager']
+
+    julie_platform_bundle.menu.main:
         class:						Knp\Menu\MenuItem
-        factory_service:	julie_platform.menu_builder
-        factory_method:		createMainMenu
+        factory_service:			julie_platform.menu_builder
+        factory_method:				createMainMenu
         tags:
             - { name: knp_menu.menu, alias: main }
+
+    # OnBoarding 1 Using Login handler
+    julie_user_bundle.component.authentication.handler.login_success_handler:
+        class:              %julie_user_bundle.component.authentication.handler.login_success_handler.class%
+        arguments:          ['@security.context', '@router', '@doctrine']
+        tags:
+            - { name: 'monolog.logger', channel: 'security'}
+
+    # OnBoarding 1 Using event listener: not functional
+    #julie_platform_bundle.demo_intro:
+    #   class:              Julie\PlatformBundle\DemoIntro\DemoIntro
+    #   arguments:          [@security.context, @doctrine, @router]
+    #   tags:
+    #       - { name: kernel.event_listener, event: security.interactive_login, method:onSecurityInteractiveLogin }

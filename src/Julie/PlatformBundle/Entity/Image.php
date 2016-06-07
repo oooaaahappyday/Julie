@@ -114,7 +114,7 @@ class Image
         }
         // remove an old file if present
         if(null !== $this->tempFilename){
-            $oldFile = $thisGetUploadRootDir().'/'.$this->id.'.'.$this->tempFilename;
+            $oldFile = $this->GetUploadRootDir().'/'.$this->id.'.'.$this->tempFilename;
             if(file_exists($oldFile)){
                 unlink($oldFile);
             }
@@ -150,7 +150,7 @@ class Image
 
     public function getUploadDir()
     {
-        // return the relative path to the file (relative to /web)
+        // return the relative path to the file (relative to /app)
         return 'uploads/img/' . $this->getGalerie();
     }
 
@@ -162,7 +162,7 @@ class Image
 
     public function getWebPath()
     {
-        return $this->getUploadDir() . '/' . $this->getId() . '.' . $this->getExtension();
+        return $this->getUploadDir().'/'.$this->getId().'.'.$this->getExtension();
     }
 
     public function setWebPath()

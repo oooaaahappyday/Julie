@@ -12,11 +12,11 @@ class HomeController extends Controller
 {
 	public function indexAction()
 	{
+		
 		$content = $this
 		->get('templating')
 		->render('JuliePlatformBundle:Home:index.html.twig', array(
 			'name' => 'Julie'
-			
 			)
 		);
 		return new Response($content);
