@@ -1,7 +1,8 @@
 {
-    "name": "joseph/julie",
-    "license": "proprietary",
-    "type": "project",
+    "name"          : "Julie Franchet",
+    "description"   : "Source code for Julie Franchet Photo Website"
+    "license"       : "proprietary",
+    "type"          : "Photo galleries",
     "autoload": {
         "psr-4": {
             "": "src/"
