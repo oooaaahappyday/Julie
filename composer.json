@@ -1,6 +1,6 @@
 {
     "name"          : "Julie Franchet",
-    "description"   : "Source code for Julie Franchet Photo Website"
+    "description"   : "Source code for Julie Franchet Photo Website",
     "license"       : "proprietary",
     "type"          : "Photo galleries",
     "autoload": {
