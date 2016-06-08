@@ -1,8 +1,13 @@
 app/bootstrap.php.cache
 app/cache/*
+<<<<<<< HEAD
 app/cache/dev/*
+=======
+>>>>>>> Menu_Navbar
+!app/cache/.gitkeep
 app/config/parameters.yml
 app/logs/*
+!app/logs/.gitkeep
 /app/phpunit.xml
 /bin/
 /composer.phar
