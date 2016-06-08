@@ -137,7 +137,6 @@ img {
 }
 
 @media (max-width: 1000px) {
-
 	body {
 		padding-top: 40px;
 	}
@@ -176,7 +175,6 @@ img {
     .collapse.in{
   		display:block !important;
 	}
-
 }
 
 @media (max-width: 768px) {
@@ -187,19 +185,15 @@ img {
 		max-width: 100%;
 		border-bottom: 1px solid black;
 		border-right: 0px white;
-
 	}
-
 	#left_side {
 		max-height: 50px;
 		max-width: 100%;
 	}
-
 	#buttons-admin {
 		margin-top: 0;
 
 	}
-
 	#infos-img {
 		display: none;
 	}
