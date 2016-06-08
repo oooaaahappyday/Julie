@@ -1,9 +1,12 @@
 // Script Javascript: image upload in the NewGalery Form
 
-
 $(document).ready(function(){
-	// get div with data-prototype attribute
+	// get div with data-prototype attribute for new gallery or edit gallery
+	if ($('#julie_platformbundle_galerie_images').length) {
 	var $container = $('div#julie_platformbundle_galerie_images');
+	} else {
+		var $container = $('div#julie_platformbundle_edit_galerie_images');
+	}
 	// link to add new image
 	var $addLink = $('<a href="#" id="add_images" class="btn btn-default">Ajouter une photo</a>');
 	$container.append($addLink);
@@ -47,14 +50,14 @@ $(document).ready(function(){
 
 	// addDeleteLink function
 	function addDeleteLink($prototype){
-		$deleteLink = $('<a href="#" class="btn btn-danger">Supprimer</a>');
+		var $deleteLink = $('<a href="#" class="btn btn-danger">Supprimer</a>');
 		// Implement link
 		$prototype.append($deleteLink);
 
 		// Implement listener onclick
-		$deleteLink.click(function(e){
-			$prototype.remove();
+		$deleteLink.on ('click', function(e){
 			e.preventDefault();
+			$prototype.remove();
 			return false;
 		});
 	}

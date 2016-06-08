@@ -11,11 +11,29 @@ Contact:
     defaults: { _controller: JuliePlatformBundle:Home:contact }
 
 NouvelleGalerie:
-    path:     /NouvelleGalerie
-    defaults: { _controller: JuliePlatformBundle:Galeries:NouvelleGalerie }
+    path:     /nouvelleGalerie
+    defaults: { _controller: JuliePlatformBundle:Galeries:nouvelleGalerie }
 
 Galerie_show:
     path:     /galerie/{id}
     defaults: { _controller: JuliePlatformBundle:Galeries:showGalerie }
+    requirements:
+        id:   \d+
+
+Galerie_edit:
+    path:     /edit/{id}
+    defaults: { _controller: JuliePlatformBundle:Galeries:editGalerie }
+    requirements:
+        id:   \d+
+
+Galerie_delete:
+    path:     /delete/{id}
+    defaults: { _controller: JuliePlatformBundle:Galeries:deleteGalerie }
+    requirements:
+        id:   \d+
+
+Image_details:
+    path:     /image/{id}
+    defaults: {_controller: JuliePlatformBundle:Galeries:imageDetails }
     requirements:
         id:   \d+

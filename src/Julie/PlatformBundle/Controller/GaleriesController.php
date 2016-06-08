@@ -6,17 +6,22 @@ use Julie\PlatformBundle\Entity\Galerie;
 use Julie\PlatformBundle\Entity\Categorie;
 use Julie\PlatformBundle\Entity\CategorieRepository;
 use Julie\PlatformBundle\Form\GalerieType;
+use Julie\PlatformBundle\Form\editGalerieType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class GaleriesController extends Controller
 {
-
+	/**
+     *@Template
+ 	 */
 	public function NouvelleGalerieAction(Request $request)
 	{
 		$galerie = new Galerie();
-		$form = $this->get('form.factory')->create(new GalerieType(), $galerie);
+		$form = $this->createForm(new GalerieType(), $galerie);
 
 		if ($form->handleRequest($request)->isValid()) 
 		{
@@ -29,28 +34,117 @@ class GaleriesController extends Controller
 			return $this->redirect($this->generateUrl('home'));
 		}
 
-		return $this->render('JuliePlatformBundle:Galeries:NouvelleGalerie.html.twig', array(
+		return array(
 			'form' => $form->createView(),
-		));
+			);
 	}
 
-	
-
-	
-	public function showGalerieAction($id)
+	/**
+	 *@Template
+	 */
+	public function editGalerieAction($id, Request $request)
 	{
-		$imageRepository = $this
-		->getDoctrine()
-		->getManager()
-		->getRepository('JuliePlatformBundle:Image');
+		$em = $this->getDoctrine()->getManager();
+		$galerie = $em->getRepository('JuliePlatformBundle:Galerie')->find($id);
 
-		$listImage = $imageRepository->findBy(array('galerie' => $id));
-		$dirImage = glob('Julie/web/uploads/img/canon/' );
-		
+		if (null === $galerie) {
+			throw new NotFoundHttpException("La galerie n'existe pas.");
+		}
+		$galerie->setUpdatedAt();
+		// To compare the content of the form sent and the array (Images) in db
+		$originalImages = new ArrayCollection();
+		foreach ($galerie->getImages() as $image) {
+			$originalImages->add($image);
+		}
 
-		
-		return  $this->render('JuliePlatformBundle:Galeries:galerie.html.twig',
-			array('id' => $id, 'listImage' => $listImage, 'dirImage' => $dirImage
-			));
+		$form = $this->createForm(new editGalerieType(), $galerie);
+
+			if ($form->handleRequest($request)->isValid()) {
+				// Compare and remove images deleted in DOM by the form
+				foreach ($originalImages as $image) {
+					if(false === $galerie->getImages()->contains($image)) {
+						$galerie->getImages()->removeElement($image);
+						$em->remove($image);
+					}
+				}
+				$em->persist($galerie);
+				$em->flush();
+
+				$request->getSession()->getFlashBag()->add('notice', 'Galerie modifiée.');
+				
+				return $this->redirect($this->generateUrl('Galerie_show', array('id' => $galerie->getId())));
+			}
+
+			return array('form' => $form->createView(),
+				'galerie' 	=> $galerie,
+				'id' 		=> $id
+				);
+		}
+
+		/**
+		 *@Template
+		 */
+		public function deleteGalerieAction($id, Request $request)
+		{
+			$em = $this->getDoctrine()->getManager();
+			$galerie = $em->getRepository('JuliePlatformBundle:Galerie')->find($id);
+
+
+			if (null === $galerie) {
+				throw new NotFoundHttpException("La galerie n'existe pas.");
+			}
+
+			$form = $this->createFormBuilder()->getForm();
+
+			if($form->handleRequest($request)->isValid()) {
+				$em->remove($galerie);
+				$em->flush();
+
+				$request->getSession()->getFlashBag()->add('notice', 'Galerie supprimée.');
+				return $this->redirect($this->generateUrl('Home_page_Julie'));
+			}
+
+			return array(
+				'form' 		=> $form->createView(),
+				'galerie' 	=> $galerie,
+				'id' 		=> $id
+				);
+		}
+
+		/**
+		 *@Template
+		 */
+		public function showGalerieAction($id)
+		{
+			$imageRepository = $this
+			->getDoctrine()
+			->getManager()
+			->getRepository('JuliePlatformBundle:Image');
+
+			$listImage = $imageRepository->findBy(array('galerie' => $id));
+			
+			return array(
+					'id' 		=> $id,
+					'listImage' => $listImage
+					);
+		}
+
+		/**
+		 *@Template
+		 */
+		public function imageDetailsAction($id)
+		{
+
+			$imageRepository = $this
+			->getDoctrine()
+			->getManager()
+			->getRepository('JuliePlatformBundle:Image');
+
+			$image = $imageRepository->find($id);
+			
+			return array(
+					'id' 	=> $id,
+					'image' => $image
+					);
+		}
 	}
-}

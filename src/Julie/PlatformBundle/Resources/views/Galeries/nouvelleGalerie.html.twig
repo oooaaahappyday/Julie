@@ -1,0 +1,12 @@
+{% extends "JuliePlatformBundle::layout.html.twig" %}
+
+{% block body %}
+{{ parent() }}
+
+{% include "JuliePlatformBundle::Navbar/navBar.html.twig" %}
+
+{# Formulaire création nouvelle galerie #}
+{% include 'JuliePlatformBundle::Galeries/form.html.twig' %}
+
+	
+{% endblock  %}

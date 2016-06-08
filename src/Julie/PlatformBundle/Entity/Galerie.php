@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Julie\PlatformBundle\Entity\Image;
 
+
 /**
  * Galerie
  *
@@ -62,6 +63,13 @@ class Galerie
     private $createdAt;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
+     */
+    private $updatedAt;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="materiel", type="text")
@@ -81,10 +89,12 @@ class Galerie
      */
     private $images;
 
+
     public function __construct()
     {
         $this->images    = new ArrayCollection();
         $this->createdAt = new \datetime();
+        $this->updatedAt = new \datetime();
 
     }
 
@@ -216,6 +226,30 @@ class Galerie
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Galerie
+     */
+    public function setUpdatedAt()
+    {
+        $this->updatedAt = new \datetime();
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 
     /**
