@@ -1,8 +1,14 @@
 {
-    "name"          : "Julie_Franchet",
+    "name"          : "JosephBoisselier/JulieFranchet",
     "description"   : "Source code for Julie Franchet Photo Website",
+    "authors"       : [
+                        {
+                            "name": "Joseph Boisselier",
+                            "role": "Developer"
+                        }
+                    ],
     "license"       : "proprietary",
-    "type"          : "Photo galleries",
+    "type"          : "project",
     "autoload": {
         "psr-4": {
             "": "src/"
