@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Julie\PlatformBundle\Entity\Categorie;
+use Julie\PlatformBundle\Entity\Image;
 use Julie\PlatformBundle\Form\ImageType;
 
 class GalerieType extends AbstractType
