@@ -1,0 +1,115 @@
+{% extends "JuliePlatformBundle::layout.html.twig" %}
+
+{% block body %}
+{{ parent() }}
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" id="left_side">
+	<div id="buttons-admin">
+		<a class="btn btn-info btn-sm" style="width:140px"  href="{{ path ('Galerie_edit', {'id': id} ) }}"   >Modifier cette galerie</a>
+		<a class="btn btn-danger btn-sm" style="width:140px" href="{{ path ('Galerie_delete', {'id': id} ) }}" >Suprimer cette galerie</a>
+	</div>
+		<div id="infos-img">
+		<ol>
+			{% for image in listImage %}
+				<li>
+					{{ image.filename }}
+				</li>
+				<ul>
+					<li>
+						Titre: {{ image.titre }}
+					</li>
+				</ul>
+			{% endfor %}
+		</ol>		
+		</div>
+	</div>
+
+	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" id="right_side">
+		<div id="gallery_show">
+		<div id="slider" class="flexslider">
+			<ul class="slides">
+				{% for image in listImage %}
+				<li>
+					<img src="{{ asset ('' ~image.webPath) }}"/>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div id="carousel" class="flexslider">
+			<ul class="slides">
+				{% for image in listImage %}
+				<li>
+					<img src="{{ asset ('' ~image.webPath) }}"/>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+		
+	</div>
+
+
+{% else %}
+
+{% set titre = null %}
+{% set currentImage = 40 %}
+	<div id="gallery_show">
+		{#
+		<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" id="left_side_visitor">
+			
+			<button class="btn btn-info btn-sm" id="imageDetails" data-toggle="modal" data-target="	#details">
+  				Détails
+			</button>
+			<!-- Modal détails photo -->
+			<div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="détailsPhoto">Détails de la photo</h4>
+						</div>
+						<div class="modal-body">
+							{{ render(controller('JuliePlatformBundle:Galeries:imageDetails', {'id': currentImage })) }}
+						</div>
+					</div><!-- modal-content -->
+				</div><!-- modal-dialog -->
+			</div><!-- modal -->
+		</div>
+		#}
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="right_side_visitor">
+			<div id="slider" class="flexslider">
+				<ul class="slides">
+				{% for image in listImage %}
+					<li>
+						<img src="{{ asset ('' ~image.webPath) }}"/>
+						{# to use the titre variable outside the loop #}
+						{% set titre = image.titre %}	
+					</li>
+				{% endfor %}
+				</ul>
+			</div>
+			<div id="carousel" class="flexslider">
+				<ul class="slides">
+					{% for image in listImage %}
+					<li>
+						<img src="{{ asset ('' ~image.webPath) }}"/>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+{% endif %}
+
+{% endblock body %}
+
+{% block javascript %}
+{{ parent() }}   
+	<script type="text/javascript" src="{{ asset('/js/galerieFlex.js') }}"></script>#}
+	
+{% endblock %}
+
+
+

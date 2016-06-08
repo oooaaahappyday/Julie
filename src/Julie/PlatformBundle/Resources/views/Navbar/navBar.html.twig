@@ -1,0 +1,66 @@
+<div class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<div class="navbar-brand" href="#">Julie Franchet</div>
+		</div>
+
+
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+						<li><a href="{{ path('NouvelleGalerie') }}" role="button">Nouvelle Galerie</a></li>
+				{% endif %}
+				<li class="active"><a href="{{ path ('Home_page_Julie') }}">Home</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportage <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							{{ knp_menu_render('reportage') }}
+						</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Art
+					<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							{{ knp_menu_render('art') }}
+						</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Studio
+					<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							{{ knp_menu_render('studio') }}
+						</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Video
+					<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							{{ knp_menu_render('video') }}
+						</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Others
+					<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							{{ knp_menu_render('souvenir') }}
+						</ul>
+				</li>
+				<li><a href="{{ path('About') }}">About</a></li>
+				<li><a href="{{ path('Contact') }}">Contact</a></li>
+				<li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+						<li><a href="{{ path('fos_user_security_logout') }}" role="button">
+							{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+						</a></li>
+				{% endif %}
+				
+			</ul>
+		</div> <!--/.nav-collapse -->
+	</div> <!-- div container -->
+</div> <!-- div tnavbar -->
