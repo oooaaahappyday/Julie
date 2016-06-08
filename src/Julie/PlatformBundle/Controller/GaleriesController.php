@@ -7,11 +7,12 @@ use Julie\PlatformBundle\Entity\Categorie;
 use Julie\PlatformBundle\Entity\CategorieRepository;
 use Julie\PlatformBundle\Form\GalerieType;
 use Julie\PlatformBundle\Form\editGalerieType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException
 
 class GaleriesController extends Controller
 {
