@@ -17,6 +17,10 @@ body {
   	overflow-x: hidden; 
 }
 
+ul {
+	list-style-type: none;
+}
+
 img {
 	max-width: 100%;
 	width: auto;
@@ -25,7 +29,7 @@ img {
 
 .container-fluid {
 	max-width: 100%;
-	margin-top: 40px;
+	margin-top: 30px;
 	height: 95%;
 }
 
@@ -126,8 +130,17 @@ img {
 .flex-centered .slides {width: 100%!important; text-align: center;}
 .flex-centered .slides li {display: inline-block!important; *display: inline!important; float: none!important;}
 .flexslider{white-space: nowrap;} 
+@media (min-width: 1001px) and (max-width: 1200px) {
+	body {
+		padding-top: 110px;
+	}
+}
 
 @media (max-width: 1000px) {
+
+	body {
+		padding-top: 40px;
+	}
     .navbar-header {
         float: none;
     }
@@ -140,6 +153,7 @@ img {
     .navbar-collapse {
         border-top: 1px solid transparent;
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+        max-height: none;
     }
     .navbar-fixed-top {
 		top: 0;
@@ -174,5 +188,19 @@ img {
 		border-bottom: 1px solid black;
 		border-right: 0px white;
 
+	}
+
+	#left_side {
+		max-height: 50px;
+		max-width: 100%;
+	}
+
+	#buttons-admin {
+		margin-top: 0;
+
+	}
+
+	#infos-img {
+		display: none;
 	}
 }
