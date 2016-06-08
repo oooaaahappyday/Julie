@@ -58,6 +58,7 @@
 {% set titre = null %}
 {% set currentImage = 40 %}
 	<div id="gallery_show">
+		{#
 		<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" id="left_side_visitor">
 			
 			<button class="btn btn-info btn-sm" id="imageDetails" data-toggle="modal" data-target="	#details">
@@ -78,7 +79,8 @@
 				</div><!-- modal-dialog -->
 			</div><!-- modal -->
 		</div>
-		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10" id="right_side_visitor">
+		#}
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="right_side_visitor">
 			<div id="slider" class="flexslider">
 				<ul class="slides">
 				{% for image in listImage %}
