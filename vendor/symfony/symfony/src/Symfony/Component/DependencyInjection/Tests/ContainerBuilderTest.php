@@ -21,6 +21,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
 use Symfony\Component\DependencyInjection\Exception\InactiveScopeException;
+use Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\DependencyInjection\Loader\ClosureLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
@@ -51,10 +53,35 @@ class ContainerBuilderTest extends \PHPUnit_Framework_TestCase
 
         try {
             $builder->getDefinition('baz');
-            $this->fail('->getDefinition() throws an InvalidArgumentException if the service definition does not exist');
-        } catch (\InvalidArgumentException $e) {
-            $this->assertEquals('The service definition "baz" does not exist.', $e->getMessage(), '->getDefinition() throws an InvalidArgumentException if the service definition does not exist');
+            $this->fail('->getDefinition() throws a ServiceNotFoundException if the service definition does not exist');
+        } catch (ServiceNotFoundException $e) {
+            $this->assertEquals('You have requested a non-existent service "baz".', $e->getMessage(), '->getDefinition() throws a ServiceNotFoundException if the service definition does not exist');
         }
+    }
+
+    public function testCreateDeprecatedService()
+    {
+        $deprecations = array();
+        set_error_handler(function ($type, $msg) use (&$deprecations) {
+            if (E_USER_DEPRECATED !== $type) {
+                restore_error_handler();
+
+                return call_user_func_array('PHPUnit_Util_ErrorHandler::handleError', func_get_args());
+            }
+
+            $deprecations[] = $msg;
+        });
+
+        $definition = new Definition('stdClass');
+        $definition->setDeprecated(true);
+
+        $builder = new ContainerBuilder();
+        $builder->createService($definition, 'deprecated_foo');
+
+        restore_error_handler();
+
+        $this->assertCount(1, $deprecations);
+        $this->assertContains('The "deprecated_foo" service is deprecated. You should stop using it, as it will soon be removed.', $deprecations[0]);
     }
 
     public function testRegister()
@@ -80,9 +107,9 @@ class ContainerBuilderTest extends \PHPUnit_Framework_TestCase
         $builder = new ContainerBuilder();
         try {
             $builder->get('foo');
-            $this->fail('->get() throws an InvalidArgumentException if the service does not exist');
-        } catch (\InvalidArgumentException $e) {
-            $this->assertEquals('The service definition "foo" does not exist.', $e->getMessage(), '->get() throws an InvalidArgumentException if the service does not exist');
+            $this->fail('->get() throws a ServiceNotFoundException if the service does not exist');
+        } catch (ServiceNotFoundException $e) {
+            $this->assertEquals('You have requested a non-existent service "foo".', $e->getMessage(), '->get() throws a ServiceNotFoundException if the service does not exist');
         }
 
         $this->assertNull($builder->get('foo', ContainerInterface::NULL_ON_INVALID_REFERENCE), '->get() returns null if the service does not exist and NULL_ON_INVALID_REFERENCE is passed as a second argument');
@@ -102,8 +129,15 @@ class ContainerBuilderTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals('Circular reference detected for service "baz", path: "baz".', $e->getMessage(), '->get() throws a LogicException if the service has a circular reference to itself');
         }
 
-        $builder->register('foobar', 'stdClass')->setScope('container');
         $this->assertTrue($builder->get('bar') === $builder->get('bar'), '->get() always returns the same instance if the service is shared');
+    }
+
+    public function testNonSharedServicesReturnsDifferentInstances()
+    {
+        $builder = new ContainerBuilder();
+        $builder->register('bar', 'stdClass')->setShared(false);
+
+        $this->assertNotSame($builder->get('bar'), $builder->get('bar'));
     }
 
     /**
@@ -125,6 +159,9 @@ class ContainerBuilderTest extends \PHPUnit_Framework_TestCase
         $builder->get('foo');
     }
 
+    /**
+     * @group legacy
+     */
     public function testGetReturnsNullOnInactiveScope()
     {
         $builder = new ContainerBuilder();
@@ -133,6 +170,9 @@ class ContainerBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($builder->get('foo', ContainerInterface::NULL_ON_INVALID_REFERENCE));
     }
 
+    /**
+     * @group legacy
+     */
     public function testGetReturnsNullOnInactiveScopeWhenServiceIsCreatedByAMethod()
     {
         $builder = new ProjectContainer();
@@ -216,6 +256,16 @@ class ContainerBuilderTest extends \PHPUnit_Framework_TestCase
         $aliases = $builder->getAliases();
         $this->assertTrue(isset($aliases['bar']));
         $this->assertTrue(isset($aliases['foobar']));
+    }
+
+    public function testSetReplacesAlias()
+    {
+        $builder = new ContainerBuilder();
+        $builder->setAlias('alias', 'aliased');
+        $builder->set('aliased', new \stdClass());
+
+        $builder->set('alias', $foo = new \stdClass());
+        $this->assertSame($foo, $builder->get('alias'), '->set() replaces an existing alias');
     }
 
     public function testAddGetCompilerPass()
@@ -463,6 +513,18 @@ class ContainerBuilderTest extends \PHPUnit_Framework_TestCase
             ),
         ), '->findTaggedServiceIds() returns an array of service ids and its tag attributes');
         $this->assertEquals(array(), $builder->findTaggedServiceIds('foobar'), '->findTaggedServiceIds() returns an empty array if there is annotated services');
+    }
+
+    public function testFindUnusedTags()
+    {
+        $builder = new ContainerBuilder();
+        $builder
+            ->register('foo', 'Bar\FooClass')
+            ->addTag('kernel.event_listener', array('foo' => 'foo'))
+            ->addTag('kenrel.event_listener', array('bar' => 'bar'))
+        ;
+        $builder->findTaggedServiceIds('kernel.event_listener');
+        $this->assertEquals(array('kenrel.event_listener'), $builder->findUnusedTags(), '->findUnusedTags() returns an array with unused tags');
     }
 
     public function testFindDefinition()
@@ -727,6 +789,21 @@ class ContainerBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(array($second, $first), $configs);
     }
 
+    public function testAbstractAlias()
+    {
+        $container = new ContainerBuilder();
+
+        $abstract = new Definition('AbstractClass');
+        $abstract->setAbstract(true);
+
+        $container->setDefinition('abstract_service', $abstract);
+        $container->setAlias('abstract_alias', 'abstract_service');
+
+        $container->compile();
+
+        $this->assertSame('abstract_service', (string) $container->getAlias('abstract_alias'));
+    }
+
     public function testLazyLoadedService()
     {
         $loader = new ClosureLoader($container = new ContainerBuilder());
@@ -759,6 +836,19 @@ class ContainerBuilderTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($classInList);
     }
+
+    public function testAutowiring()
+    {
+        $container = new ContainerBuilder();
+
+        $container->register('a', __NAMESPACE__.'\A');
+        $bDefinition = $container->register('b', __NAMESPACE__.'\B');
+        $bDefinition->setAutowired(true);
+
+        $container->compile();
+
+        $this->assertEquals('a', (string) $container->getDefinition('b')->getArgument(0));
+    }
 }
 
 class FooClass
@@ -770,5 +860,16 @@ class ProjectContainer extends ContainerBuilder
     public function getFoobazService()
     {
         throw new InactiveScopeException('foo', 'request');
+    }
+}
+
+class A
+{
+}
+
+class B
+{
+    public function __construct(A $a)
+    {
     }
 }
