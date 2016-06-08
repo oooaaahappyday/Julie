@@ -47,7 +47,6 @@ class GaleriesController extends Controller
 	{
 		$em = $this->getDoctrine()->getManager();
 		$galerie = $em->getRepository('JuliePlatformBundle:Galerie')->find($id);
-
 		if (null === $galerie) {
 			throw new NotFoundHttpException("La galerie n'existe pas.");
 		}
@@ -57,9 +56,7 @@ class GaleriesController extends Controller
 		foreach ($galerie->getImages() as $image) {
 			$originalImages->add($image);
 		}
-
 		$form = $this->createForm(new editGalerieType(), $galerie);
-
 			if ($form->handleRequest($request)->isValid()) {
 				// Compare and remove images deleted in DOM by the form
 				foreach ($originalImages as $image) {
@@ -70,16 +67,10 @@ class GaleriesController extends Controller
 				}
 				$em->persist($galerie);
 				$em->flush();
-
 				$request->getSession()->getFlashBag()->add('notice', 'Galerie modifiée.');
-				
 				return $this->redirect($this->generateUrl('Galerie_show', array('id' => $galerie->getId())));
 			}
-
-			return array('form' => $form->createView(),
-				'galerie' 	=> $galerie,
-				'id' 		=> $id
-				);
+			return array('form'=> $form->createView(), 'galerie'=> $galerie, 'id'=> $id);
 		}
 
 		/**
