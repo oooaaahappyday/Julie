@@ -210,20 +210,19 @@ img {
 		display: none;
 	}
 	#about img {
-		min-width: 35%;
+		min-width: 20%;
 	}
 }
 
 /*----------//////////----------ABOUT PAGE----------//////////----------*/
 #about {
 	margin: 10px;
-	max-width: 100%;
+	width: 100%;
 }
 
 #about img {
-	max-width: 20%;
-	float: left;
-	margin: 5px;
+	min-width: 9%;
+	max-width: 13%;
 	padding: 3px;
 	border: 2px solid gray;
 }
@@ -241,3 +240,25 @@ img {
 }
 .events {}
 .event_details {}
+
+/*----------//////////----------CONTACT PAGE----------//////////----------*/
+#contact {
+	/* vertical align */
+	margin-top: 40vh; /* poussé de la moitié de hauteur de viewport */
+  	transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+  	/* horizontal align */
+  	width: 50%;
+  	margin-left: auto;
+  	margin-right: auto;
+}
+
+#contact img {
+	max-width: 30%;	
+	margin: 5px;
+	padding: 3px;
+	border: 2px solid gray;
+}
+
+#contact_infos {
+	margin-left: 5px;
+}
