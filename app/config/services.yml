@@ -1,5 +1,3 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
 parameters:
 #    parameter_name: value
 
@@ -46,9 +44,16 @@ services:
         tags:
             - { name: knp_menu.menu, alias: video }
 
-    app.menu.souvenir:
+    app.menu.others:
         class:				Knp\Menu\MenuItem
         factory_service:	app.menu_builder
-        factory_method:		createSouvenirMenu
+        factory_method:		createOthersMenu
         tags:
-            - { name: knp_menu.menu, alias: souvenir }
+            - { name: knp_menu.menu, alias: others }
+
+    app.menu.projects:
+        class:				Knp\Menu\MenuItem
+        factory_service:	app.menu_builder
+        factory_method:		createProjectsMenu
+        tags:
+            - { name: knp_menu.menu, alias: projects }

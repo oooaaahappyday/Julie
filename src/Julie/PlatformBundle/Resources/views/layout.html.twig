@@ -12,23 +12,14 @@
 	<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 	<link rel="stylesheet" href="{{ asset('Flexslider/flexslider.css') }}">
 	{% endblock %}
-
-
 </head>
-<!-- <body onload="resizeCanvas();"> -->
+
 <body>
 	
 	<div class="container-fluid">
 
 {# NAVBAR TEMPLATE #}
 		{% include "JuliePlatformBundle::Navbar/navBar.html.twig" %}
-
-{# JAVASCRIPT BANNER #}
-		<!-- 
-		<div>
-			<canvas id="banniere"></canvas>
-		</div>
-		-->
 
 {# AUTHENTICATION #}
 		<div id="authentication">
@@ -62,9 +53,5 @@
 	<script type="text/Javascript" src="{{ asset('Flexslider/jquery.flexslider-min.js')}}"></script>
 	<script type="text/javascript" src="{{ asset('js/resizeCanvas.js')}}"></script>
 {% endblock javascript %}
-
-<!-- test bannière -->
-{# <script type="text/javascript" src="{{ asset('/js/banniere.js')}}"></script> #}
-
 </body>
 </html>

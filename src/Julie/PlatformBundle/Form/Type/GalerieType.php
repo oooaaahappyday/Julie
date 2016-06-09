@@ -1,6 +1,6 @@
 <?php
 
-namespace Julie\PlatformBundle\Form;
+namespace Julie\PlatformBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Julie\PlatformBundle\Entity\Categorie;
 use Julie\PlatformBundle\Entity\Image;
-use Julie\PlatformBundle\Form\ImageType;
+use Julie\PlatformBundle\Form\Type\ImageType;
 
 class GalerieType extends AbstractType
 {

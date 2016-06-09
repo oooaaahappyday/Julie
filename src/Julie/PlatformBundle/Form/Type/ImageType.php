@@ -1,6 +1,6 @@
 <?php
 
-namespace Julie\PlatformBundle\Form;
+namespace Julie\PlatformBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

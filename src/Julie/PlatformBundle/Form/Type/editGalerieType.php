@@ -1,12 +1,12 @@
 <?php
 
-namespace Julie\PlatformBundle\Form;
+namespace Julie\PlatformBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\FormBuilderInterface;
-use Julie\PlatformBundle\Form\GalerieType;
-use Julie\PlatformBundle\Form\ImageType;
+use Julie\PlatformBundle\Form\Type\GalerieType;
+use Julie\PlatformBundle\Form\Type\ImageType;
 
 
 class editGalerieType extends AbstractType

@@ -15,8 +15,7 @@ class MenuBuilder
 	/**
 	* @param FactoryInterface $factory
 	*/
-	public function __construct(FactoryInterface $factory,
-															EntityManager $em)
+	public function __construct(FactoryInterface $factory, EntityManager $em)
 	{
 		$this->factory 	= $factory;
 		$this->em 			= $em;
@@ -129,12 +128,33 @@ class MenuBuilder
 		return $menu;
 	}
 
-	public function createSouvenirMenu()
+	public function createOthersMenu()
 	{
 		$menu = $this->factory->createItem('root');
 
 		// get list from db
-		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(array('categorie' => 'souvenir'));
+		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(array('categorie' => 'others'));
+		// sub menus
+		foreach ($listGaleries as $galerie)
+		{
+			$menu->addChild(
+				'galerie_' . $galerie->getId(), array(
+					'label' => $galerie->getNom(),
+					'route' => 'Galerie_show',
+					'routeParameters' => array('id' => $galerie->getId())
+					));
+		}
+		
+
+		return $menu;
+	}
+
+	public function createProjectsMenu()
+	{
+		$menu = $this->factory->createItem('root');
+
+		// get list from db
+		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(array('categorie' => 'projects'));
 		// sub menus
 		foreach ($listGaleries as $galerie)
 		{

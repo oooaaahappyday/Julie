@@ -27,6 +27,18 @@ img {
 	height: auto;
 }
 
+/*----------//////////----------NAVBAR----------//////////----------*/
+@font-face {
+	font-family: "Mistral";
+	src: url('fonts/Mistral.ttf');
+}
+
+.navbar-default .navbar-brand {
+	font-family: "Mistral", "Times New Roman", sans-serif;
+	font-size: 2em;
+}
+
+/*----------//////////----------BODY----------//////////----------*/
 .container-fluid {
 	max-width: 100%;
 	margin-top: 30px;
@@ -197,4 +209,35 @@ img {
 	#infos-img {
 		display: none;
 	}
+	#about img {
+		min-width: 35%;
+	}
 }
+
+/*----------//////////----------ABOUT PAGE----------//////////----------*/
+#about {
+	margin: 10px;
+	max-width: 100%;
+}
+
+#about img {
+	max-width: 20%;
+	float: left;
+	margin: 5px;
+	padding: 3px;
+	border: 2px solid gray;
+}
+
+#my_way {
+	max-width: 100%;
+	font-size: 1.2em;
+}
+#calendar{}
+#expos {}
+.year {}
+.dates {
+	list-style-type: circle;
+	margin-left: 10px; 
+}
+.events {}
+.event_details {}

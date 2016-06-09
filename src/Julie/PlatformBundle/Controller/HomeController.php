@@ -51,6 +51,5 @@ class HomeController extends Controller
 		->getManager()
 		->getRepository('JuliePlatformBundle:Galerie')
 		;
-		$listGaleries = $repository->findAll();
 	}
 }
