@@ -5,9 +5,7 @@
 	{% include "JuliePlatformBundle::Navbar/navBar.html.twig" %}
 
 	{% block left_side %}
-	<a href="{{ path('Galerie_show', {'id': galerie.id}) }}" class="btn btn-default">
-      	Retour
-   	</a>
+		<a href="{{ path('Galerie_show', {'id': galerie.id}) }}" class="btn btn-default">Retour</a>
 	{% endblock left_side %}
 
 	{% block right_side %}

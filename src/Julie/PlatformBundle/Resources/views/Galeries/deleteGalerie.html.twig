@@ -1,9 +1,12 @@
 {% extends "JuliePlatformBundle::layout.html.twig" %}
+
 {% block body %}
+
 <form action="{{ path('Galerie_delete', {'id': id}) }}" method="post">
 	<a href="{{ path('Galerie_show', {'id': id}) }}" class="btn btn-default">
 		Annuler et retourner à la galerie
 	</a>
 	<input type="submit" value="Supprimer" class="btn btn-danger" />
 	{{ form_rest(form) }}
+	
 {% endblock %}
