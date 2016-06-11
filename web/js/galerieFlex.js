@@ -33,6 +33,7 @@ $(document).ready(function() {
         }
         */
     },
+    keyboard: true,
     animation: "slide",
     controlNav: false,
     animationLoop: false,
@@ -40,8 +41,8 @@ $(document).ready(function() {
     sync: "#carousel",
     nextText: '',
     prevText: '',
-    keyboard: true,
-    touch: true
+    touch: true,
+    multipleKeyboard: true
   });
  
   $('#slider-admin').flexslider({
