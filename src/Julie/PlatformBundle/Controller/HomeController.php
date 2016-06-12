@@ -18,10 +18,10 @@ class HomeController extends Controller
 			->getManager()
 			->getRepository('JuliePlatformBundle:Image');
 
-		$listImage = $imageRepository->findBy(array('galerie' => 27));
+		$listImage = $imageRepository->findBy(array('galerie' => 1));
 
 		return $this->render('JuliePlatformBundle:Home:index.html.twig', array(
-			'id' => 27,
+			'id' => 1,
 	  	'listImage' => $listImage
 		));
 		/*
