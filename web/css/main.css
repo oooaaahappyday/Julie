@@ -9,12 +9,12 @@ html {
 
 body { 
 	width: 100%;
-	height: 100%;
-  	padding-top: 60px;
+	height: 95%;
+  padding-top: 60px;
 	word-wrap: break-word;
 	margin: 0;
-  	background-color: white;
-  	overflow-x: hidden; 
+  background-color: white;
+  overflow-x: hidden; 
 }
 
 ul {
@@ -28,10 +28,6 @@ img {
 }
 
 /*----------//////////----------NAVBAR----------//////////----------*/
-@font-face {
-	font-family: "Mistral";
-	src: url('fonts/Mistral.ttf');
-}
 
 .navbar-default a {
 	color: black;
@@ -42,6 +38,38 @@ img {
 	color: black;
 	font-size: 2.2em;
 	margin-top: 10px;
+}
+
+/*----------//////////----------FOOTER----------//////////----------*/
+#footer {
+	position: fixed;
+	display: flex;
+	left: 0;
+	bottom: 0;
+	height: 40px;
+	width: 100%;
+	background-color: white;
+}
+
+#social_links {
+	height: 40px;
+	padding: 5px;
+	min-width: 220px;
+	margin-left: 10px;
+}
+
+#social_links img {
+	max-height: 30px;
+	margin-left: 5px;
+	margin-top: 2px;
+}
+
+#copyright {
+	right: 0px;
+	height: 30px;
+	min-width: 220px;
+	margin: auto;
+	background-color: white;
 }
 
 /*----------//////////----------BODY----------//////////----------*/
@@ -91,14 +119,14 @@ img {
 
 /*----------//////////----------SHOW GALERIES----------//////////----------*/
 #gallery_show {
-	height:	100%;
+	height:	95%;
 	max-height: 1000px;
 	padding: 0;
 }
 
 /*----------//////////----------FLEXSLIDER----------//////////----------*/
 #slider {
-	height: 85%;
+	height: 80%;
 	margin: 0;
 }
 
@@ -148,6 +176,7 @@ img {
 .flex-centered .slides {width: 100%!important; text-align: center;}
 .flex-centered .slides li {display: inline-block!important; *display: inline!important; float: none!important;}
 .flexslider{white-space: nowrap;} 
+
 @media (min-width: 1001px) and (max-width: 1200px) {
 	body {
 		padding-top: 110px;

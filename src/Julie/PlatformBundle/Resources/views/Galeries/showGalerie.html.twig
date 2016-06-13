@@ -52,9 +52,9 @@
 {% set titre = null %}
 {% set currentImage = 40 %}
 	<div id="gallery_show">
-		{#
-		<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" id="left_side_visitor">
-			
+		
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" id="left_side_visitor">
+			{#
 			<button class="btn btn-info btn-sm" id="imageDetails" data-toggle="modal" data-target="	#details">
   				Détails
 			</button>
@@ -72,9 +72,9 @@
 					</div><!-- modal-content -->
 				</div><!-- modal-dialog -->
 			</div><!-- modal -->
-		</div>
 		#}
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="right_side_visitor">
+		</div>
+		<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" id="right_side_visitor">
 			<div id="slider" class="flexslider">
 				<ul class="slides">
 					{% for image in listImage %}
@@ -100,6 +100,10 @@
 {% endif %}
 
 {% endblock body %}
+
+{% block footer %}
+	{{ parent() }}
+{% endblock %}
 
 {% block javascript %}
 {{ parent() }}   

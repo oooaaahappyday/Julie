@@ -7,7 +7,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<div class="navbar-brand" href="#">Julie Franchet </div>
+			<div class="navbar-brand"><a href="{{ path ('Home_page_Julie') }}">Julie Franchet</a></div>
 		</div>
 
 
@@ -16,7 +16,6 @@
 				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 						<li><a href="{{ path('NouvelleGalerie') }}" role="button">Nouvelle Galerie</a></li>
 				{% endif %}
-				<li class="active"><a href="{{ path ('Home_page_Julie') }}">Home</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportage <b class="caret"></b></a>
 						<ul class="dropdown-menu">

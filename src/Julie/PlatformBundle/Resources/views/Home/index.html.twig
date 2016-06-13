@@ -1,5 +1,5 @@
 {% extends "JuliePlatformBundle::layout.html.twig" %}
-{% block flexslider %}
+{% block body %}
 	<div id="main">
 		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 			<div id="buttons-admin">
@@ -35,13 +35,15 @@
 		</div>	
 	</div>
 	#}
-{% endblock flexslider %}
+{% endblock body %}
+
+{% block footer %}
+	{{ parent() }}
+{% endblock %}
 
 {% block javascript %}
 {{ parent() }}
 	<script type="text/javascript" src="{{ asset('/js/homepageFlex.js') }}"></script>
 {% endblock %}
 
-{% block footer %}	
-{% endblock footer %}
 
