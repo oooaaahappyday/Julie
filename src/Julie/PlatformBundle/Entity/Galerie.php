@@ -27,6 +27,17 @@ class Galerie
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="rang", type="integer")
+     * @Assert\Type(
+     *  type="integer",
+     *  message="The value {{ value }} is not a valid {{ type }}."
+     *)
+     */
+    private $rang;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
@@ -122,6 +133,7 @@ class Galerie
         return $this;
     }
 
+
     /**
      * Get nom
      *
@@ -130,6 +142,30 @@ class Galerie
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Get rang
+     *
+     * @return string
+     */
+    public function getRang()
+    {
+        return $this->rang;
+    }
+
+    /**
+     * Set rang
+     *
+     * @param integer $rang
+     *
+     * @return Galerie
+     */
+    public function setRang($rang)
+    {
+        $this->rang = $rang;
+
+        return $this;
     }
 
     /**

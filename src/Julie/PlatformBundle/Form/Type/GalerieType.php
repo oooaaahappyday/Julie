@@ -21,6 +21,7 @@ class GalerieType extends AbstractType
     {
         $builder
             ->add('nom',        'text')
+            ->add('rang',       'integer')
             ->add('date',       'date')
             ->add('pays',       'text')
             ->add('lieux',      'text')
@@ -32,7 +33,7 @@ class GalerieType extends AbstractType
                 'multiple'      => false,
                 'required'      => true
                  ))
-            ->add('images',      'collection', array(
+            ->add('images',             'collection', array(
                 'type'          => new ImageType(),
                 'prototype'     => true,
                 'allow_add'     => true,

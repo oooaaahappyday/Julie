@@ -47,7 +47,10 @@ class MenuBuilder
 	{
 		$menu = $this->factory->createItem('root');
 		
-		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(array('categorie' => 'reportage'));
+		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(
+			array('categorie' => 'reportage'),
+			array('rang' 			=> 'ASC')
+		);
 		foreach ($listGaleries as $galerie)
 		{
 			$menu->addChild(
@@ -63,7 +66,10 @@ class MenuBuilder
 	public function createArtMenu()
 	{
 		$menu = $this->factory->createItem('root');
-		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(array('categorie' => 'art'));
+		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(
+			array('categorie' => 'art'),
+			array('rang' 			=> 'ASC')
+			);
 		foreach ($listGaleries as $galerie)
 		{
 			$menu->addChild(
@@ -79,7 +85,10 @@ class MenuBuilder
 	public function createStudioMenu()
 	{
 		$menu = $this->factory->createItem('root');
-		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(array('categorie' => 'studio'));
+		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(
+			array('categorie' => 'studio'),
+			array('rang' 			=> 'ASC')
+			);
 		foreach ($listGaleries as $galerie)
 		{
 			$menu->addChild(
@@ -95,7 +104,10 @@ class MenuBuilder
 	public function createVideoMenu()
 	{
 		$menu = $this->factory->createItem('root');
-		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(array('categorie' => 'video'));
+		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(
+			array('categorie' => 'video'),
+			array('rang' 			=> 'ASC')
+			);
 		foreach ($listGaleries as $galerie)
 		{
 			$menu->addChild(
@@ -111,7 +123,10 @@ class MenuBuilder
 	public function createOthersMenu()
 	{
 		$menu = $this->factory->createItem('root');
-		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(array('categorie' => 'others'));
+		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(
+			array('categorie' => 'others'),
+			array('rang' 			=> 'ASC')
+			);
 		foreach ($listGaleries as $galerie)
 		{
 			$menu->addChild(
@@ -127,7 +142,10 @@ class MenuBuilder
 	public function createProjectsMenu()
 	{
 		$menu = $this->factory->createItem('root');
-		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(array('categorie' => 'projects'));
+		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(
+			array('categorie' => 'projects'),
+			array('rang' 			=> 'ASC')
+			);
 		foreach ($listGaleries as $galerie)
 		{
 			$menu->addChild(

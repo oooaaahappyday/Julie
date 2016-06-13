@@ -113,7 +113,8 @@ class GaleriesController extends Controller
 			->getManager()
 			->getRepository('JuliePlatformBundle:Image');
 
-			$listImage = $imageRepository->findBy(array('galerie' => $id));
+			$listImage = $imageRepository->findBy(
+				array('galerie' => $id));
 			
 			return array(
 					'id' 		=> $id,
