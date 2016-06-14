@@ -25,42 +25,42 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportage <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							{{ knp_menu_render('reportage') }}
+							{{ knp_menu_render('reportage', {'template': 'JuliePlatformBundle:Menu:knp_menu.html.twig'}) }}
 						</ul>
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Project
 					<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							{{ knp_menu_render('projects') }}
+							{{ knp_menu_render('projects', {'template': 'JuliePlatformBundle:Menu:knp_menu.html.twig'}) }}
 						</ul>
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Art
 					<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							{{ knp_menu_render('art') }}
+							{{ knp_menu_render('art', {'template': 'JuliePlatformBundle:Menu:knp_menu.html.twig'}) }}
 						</ul>
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Studio
 					<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							{{ knp_menu_render('studio') }}
+							{{ knp_menu_render('studio', {'template': 'JuliePlatformBundle:Menu:knp_menu.html.twig'}) }}
 						</ul>
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Video
 					<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							{{ knp_menu_render('video') }}
+							{{ knp_menu_render('video', {'template': 'JuliePlatformBundle:Menu:knp_menu.html.twig'}) }}
 						</ul>
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Others
 					<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							{{ knp_menu_render('others') }}
+							{{ knp_menu_render('others', {'template': 'JuliePlatformBundle:Menu:knp_menu.html.twig'}) }}
 						</ul>
 				</li>
 				{% if not app.user %}
