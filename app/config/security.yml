@@ -6,14 +6,17 @@ security:
 
     role_hierarchy:
         ROLE_VISITOR: ROLE_USER
-        ROLE_ADMIN:   [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_ADMIN:   [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH, ROLE_SUPER_ADMIN]
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         main:
             id: fos_user.user_provider.username
 
     access_control:
-        - { path: ^/NouvelleGalerie, roles: ROLE_ADMIN }
+        - { path: ^/nouvelleGalerie,    roles: ROLE_SUPER_ADMIN }
+        - { path: ^/edit,               roles: ROLE_SUPER_ADMIN }
+        - { path: ^/delete,             roles: ROLE_SUPER_ADMIN }
+        - { path: ^/_console,           roles: ROLE_SUPER_ADMIN }
 
     firewalls:
         dev:
