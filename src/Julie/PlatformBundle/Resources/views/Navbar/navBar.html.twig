@@ -7,7 +7,13 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<div class="navbar-brand"><a href="{{ path ('Home_page_Julie') }}">Julie Franchet</a></div>
+			{% if not app.user %}
+			<div class="navbar-brand">
+				<a href="{{ path ('Home_page_Julie') }}">Julie Franchet</br>
+					<div id="navbar_subtitle"><em>Photographer</em></div>
+				</a>
+			</div>
+			{% endif %}
 		</div>
 
 
@@ -64,7 +70,12 @@
 				<li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
 				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 						<li><a href="{{ path('fos_user_security_logout') }}" role="button">
+							<div id="logout_icon">
+								<img src="{{ asset('../img/icones/Off.jpg') }}">
+							</div>
+							{#
 							{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+							#}
 						</a></li>
 				{% endif %}
 				
