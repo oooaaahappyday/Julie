@@ -1,0 +1,65 @@
+{% extends "JuliePlatformBundle::layout.html.twig" %}
+
+{% block body %}
+	<div id="contact">
+		<img src="img/Autoportrait.jpg">
+		<div id="contact_infos">
+			<h4>Pour me contacter:</h4></br>
+			<p>
+				<h4><em>Réseaux Sociaux</em></br></h4>
+				Blog: 		<a href="http://juliefranchet.com/WordPress3/" target="_blank">Julie Franchet</a></br>
+				Instagram: 	<a href="https://www.instagram.com/escarabeille/" target="_blank">escarabeille</a></br>
+				Facebook:	<a href="https://www.facebook.com/julie.franchet.5" target="_blank">Julie Franchet </a></br>
+				Twitter: 	<a href="https://twitter.com/juliedjan" target="_blank">@JulieDjan</a></br>
+				Linked In:	<a href="https://fr.linkedin.com/in/juliefranchet" target="_blank">Julie Franchet</a></br>
+				</p>
+				<h4><em>Par Mail</em></br></h4>
+				<p>
+					{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+			{{ form_errors(form) }}
+
+			<div class="form-group"> {# Nom #}
+				{{ form_label(form.name, "Nom", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+				{{ form_errors(form.name) }}
+				<div class="col-xs-12 col-sm-9 col-md-9">
+					{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+
+			<div class="form-group"> {# email #}
+				{{ form_label(form.email, "Email", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+				{{ form_errors(form.email) }}
+				<div class="col-xs-12 col-sm-9 col-md-9">
+					{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+
+			<div class="form-group"> {# Sujet #}
+				{{ form_label(form.sujet, "Sujet", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+				{{ form_errors(form.sujet) }}
+				<div class="col-xs-12 col-sm-9 col-md-9">
+					{{ form_widget(form.sujet, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+
+			<div class="form-group"> {# message #}
+				{{ form_label(form.message, "Message", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+				{{ form_errors(form.message) }}
+				<div class="col-xs-12 col-sm-9 col-md-9">
+					{{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }}
+				</div>
+			</div>
+
+			<div class="form-group"> {# Bouton Envoyer #}
+				<div class="col-xs-12 col-sm-9 col-md-9 col-sm-offset-3">
+					{{ form_widget(form.envoyer, {'attr': {'class': 'btn btn-primary'}}) }}
+				</div>
+			</div>
+
+	{{ form_rest(form) }}
+	{{ form_end(form) }}
+				</p>
+		</div>
+	</div> <!-- div contact -->
+	
+{% endblock body %}
