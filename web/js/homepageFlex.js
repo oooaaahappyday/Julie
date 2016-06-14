@@ -1,6 +1,6 @@
 $(window).load(function() {
 	$('.flexslider').flexslider({
-		animation: "fade",
+		animation: "slide	",
 		nextText: '',
     	prevText: ''
 	});

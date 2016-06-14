@@ -9,6 +9,7 @@ $(document).ready(function() {
     if (slider.pagingCount == 1) slider.addClass('flex-centered');
     },
     animation: "slide",
+    easing: "swing",
     controlNav: false,
     animationLoop: false,
     slideshow: false,
@@ -35,26 +36,15 @@ $(document).ready(function() {
     },
     keyboard: true,
     animation: "slide",
+    easing: "swing",
     controlNav: false,
     animationLoop: false,
     slideshow: false,
     sync: "#carousel",
+    smoothHeight: true,
     nextText: '',
     prevText: '',
     touch: true,
     multipleKeyboard: true
   });
- 
-  $('#slider-admin').flexslider({
-    animation: "slide",
-    controlNav: false,
-    animationLoop: false,
-    slideshow: false,
-    sync: "#carousel-vertical",
-    nextText: '',
-    prevText: '',
-    keyboard: true,
-    touch: true
-  });
-
 });
