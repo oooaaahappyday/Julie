@@ -1,21 +1,31 @@
 {% extends "JuliePlatformBundle::layout.html.twig" %}
 
 {% block body %}
-	<div id="contact">
-		<img src="img/Autoportrait.jpg">
-		<div id="contact_infos">
-			<h4>Pour me contacter:</h4></br>
-			<p>
-				<h4><em>Réseaux Sociaux</em></br></h4>
-				Blog: 		<a href="http://juliefranchet.com/WordPress3/" target="_blank">Julie Franchet</a></br>
-				Instagram: 	<a href="https://www.instagram.com/escarabeille/" target="_blank">escarabeille</a></br>
-				Facebook:	<a href="https://www.facebook.com/julie.franchet.5" target="_blank">Julie Franchet </a></br>
-				Twitter: 	<a href="https://twitter.com/juliedjan" target="_blank">@JulieDjan</a></br>
-				Linked In:	<a href="https://fr.linkedin.com/in/juliefranchet" target="_blank">Julie Franchet</a></br>
-				</p>
-				<h4><em>Par Mail</em></br></h4>
-				<p>
-					{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+<div id="infos" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
+	<img src="../img/Autoportrait.jpg">
+	<p>
+		<h4><em>Réseaux Sociaux:</em></h4>
+		
+			Blog:<a href="http://juliefranchet.com/WordPress3/" target="_blank">Julie Franchet</a>
+			<br />
+			Instagram:<a href="https://www.instagram.com/escarabeille/" target="_blank">escarabeille</a>
+			<br />
+			Facebook:<a href="https://www.facebook.com/julie.franchet.5" target="_blank">Julie Franchet </a>
+			<br />
+			Twitter:<a href="https://twitter.com/juliedjan" target="_blank">@JulieDjan</a>
+			<br />
+			Linked In:<a href="https://fr.linkedin.com/in/juliefranchet" target="_blank">Julie Franchet</a>
+			<br />
+		<h4><em>Pour acheter des tirages:</em></h4>
+			<a href="http://juliefranchet.photoshelter.com/gallery-list">Photoshelter Julie Franchet</a>		
+	</p>
+</div>
+
+<div id="contactForm" class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+	<h4><em>Pour me laisser un message:</em></h4>
+	<br />
+	{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
 			{{ form_errors(form) }}
 
 			<div class="form-group"> {# Nom #}
@@ -55,11 +65,8 @@
 					{{ form_widget(form.envoyer, {'attr': {'class': 'btn btn-primary'}}) }}
 				</div>
 			</div>
+				{{ form_rest(form) }}
+				{{ form_end(form) }}
+</div>
 
-	{{ form_rest(form) }}
-	{{ form_end(form) }}
-				</p>
-		</div>
-	</div> <!-- div contact -->
-	
 {% endblock body %}

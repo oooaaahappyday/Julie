@@ -58,27 +58,27 @@ img {
 	display: flex;
 	left: 0;
 	bottom: 0;
-	height: 40px;
+	height: 35px;
 	width: 100%;
 	background-color: white;
 	border-top: 1px solid gray;
 }
 #social_links {
-	height: 40px;
+	height: 35px;
 	padding: 5px;
-	min-width: 220px;
+	min-width: 160px;
 	margin-left: 10px;
 }
 #social_links img {
-	max-height: 30px;
+	max-height: 25px;
 	margin-left: 5px;
 	margin-top: 2px;
 }
 #copyright {
-	right: 0px;
+	float: right;
 	height: 30px;
 	min-width: 220px;
-	margin: auto;
+	margin-right: 5px;
 	background-color: white;
 }
 
@@ -297,23 +297,18 @@ img {
 .event_details {}
 
 /*----------//////////----------CONTACT PAGE----------//////////----------*/
-#contact {
-	/* vertical align */
-	margin-top: 40vh; /* poussé de la moitié de hauteur de viewport */
-  	transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
-  	/* horizontal align */
-  	width: 50%;
-  	margin-left: auto;
-  	margin-right: auto;
+#infos {
+	padding-top: 20px;
 }
-
-#contact img {
-	max-width: 30%;	
+#infos img {
+	max-width: 200px;	
 	margin: 5px;
 	padding: 3px;
 	border: 2px solid gray;
 }
 
-#contact_infos {
-	margin-left: 5px;
+#contactForm {
+	padding-top: 20px;
+	padding-bottom: 35px;
 }
+
