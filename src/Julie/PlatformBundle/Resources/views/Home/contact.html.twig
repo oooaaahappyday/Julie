@@ -3,7 +3,7 @@
 {% block body %}
 
 <div id="infos" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
-	<img src="../img/Autoportrait.jpg">
+	<img src="img/Autoportrait.jpg">
 	<p>
 		<h4><em>Réseaux Sociaux:</em></h4>
 		
@@ -17,7 +17,7 @@
 			<br />
 			Linked In:<a href="https://fr.linkedin.com/in/juliefranchet" target="_blank">Julie Franchet</a>
 			<br />
-		<h4><em>Pour acheter des tirages:</em></h4>
+		<h4><em>Acheter mes images:</em></h4>
 			<a href="http://juliefranchet.photoshelter.com/gallery-list">Photoshelter Julie Franchet</a>		
 	</p>
 </div>
@@ -29,7 +29,7 @@
 			{{ form_errors(form) }}
 
 			<div class="form-group"> {# Nom #}
-				{{ form_label(form.name, "Nom", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+				{{ form_label(form.name, "Nom:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
 				{{ form_errors(form.name) }}
 				<div class="col-xs-12 col-sm-9 col-md-9">
 					{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
@@ -37,7 +37,7 @@
 			</div>
 
 			<div class="form-group"> {# email #}
-				{{ form_label(form.email, "Email", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+				{{ form_label(form.email, "Email:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
 				{{ form_errors(form.email) }}
 				<div class="col-xs-12 col-sm-9 col-md-9">
 					{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
@@ -45,7 +45,7 @@
 			</div>
 
 			<div class="form-group"> {# Sujet #}
-				{{ form_label(form.sujet, "Sujet", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+				{{ form_label(form.sujet, "Titre:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
 				{{ form_errors(form.sujet) }}
 				<div class="col-xs-12 col-sm-9 col-md-9">
 					{{ form_widget(form.sujet, {'attr': {'class': 'form-control'}}) }}
@@ -53,7 +53,7 @@
 			</div>
 
 			<div class="form-group"> {# message #}
-				{{ form_label(form.message, "Message", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+				{{ form_label(form.message, "Message:", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
 				{{ form_errors(form.message) }}
 				<div class="col-xs-12 col-sm-9 col-md-9">
 					{{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }}
