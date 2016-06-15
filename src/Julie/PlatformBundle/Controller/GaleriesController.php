@@ -140,4 +140,4 @@ class GaleriesController extends Controller
 					'image' => $image
 					);
 		}
-	}
+}

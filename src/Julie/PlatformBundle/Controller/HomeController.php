@@ -56,7 +56,7 @@ class HomeController extends Controller
 						$message = \Swift_Message::newInstance()
 							->setSubject($form->get('sujet')->getData())
 							->setFrom($form->get('email')->getData())
-							->setTo('joseph.boisselier@gmail')
+							->setTo('joseph.boisselier@gmail.com')
 							->setBody(
 									$this->renderView(
 										'JuliePlatformBundle:Mail:contact_mail.html.twig', array(
