@@ -19,7 +19,7 @@ Galerie_show:
     defaults: { _controller: JuliePlatformBundle:Galeries:showGalerie }
     requirements:
         id:   \d+
-        categorie: homepage|reportage|project|studio|video|others
+        categorie: homepage|reportage|projects|studio|video|others
 
 Galerie_edit:
     path:     /edit/{id}
