@@ -1,3 +1,4 @@
+
 <div class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -9,13 +10,16 @@
 			</button>
 			{% if not app.user %}
 			<div class="navbar-brand">
-				<a href="{{ path ('Home_page_Julie') }}">Julie Franchet</br>
+				<a href="{{ path ('Home_page_Julie') }}">Julie Franchet<br />
 					<div id="navbar_subtitle"><em>Photographer</em></div>
 				</a>
 			</div>
+			{% else %}
+			<div class="navbar-brand">
+				<a href="{{ path('Home_page_Julie') }}" role="button">Home</a>
+			</div>
 			{% endif %}
 		</div>
-
 
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
@@ -33,13 +37,6 @@
 					<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							{{ knp_menu_render('projects', {'template': 'JuliePlatformBundle:Menu:knp_menu.html.twig'}) }}
-						</ul>
-				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Art
-					<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							{{ knp_menu_render('art', {'template': 'JuliePlatformBundle:Menu:knp_menu.html.twig'}) }}
 						</ul>
 				</li>
 				<li class="dropdown">

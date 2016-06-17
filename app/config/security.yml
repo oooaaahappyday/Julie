@@ -16,6 +16,7 @@ security:
         - { path: ^/nouvelleGalerie,    roles: ROLE_SUPER_ADMIN }
         - { path: ^/edit,               roles: ROLE_SUPER_ADMIN }
         - { path: ^/delete,             roles: ROLE_SUPER_ADMIN }
+        - { path: ^/studio,             roles: ROLE_SUPER_ADMIN }
         - { path: ^/_console,           roles: ROLE_SUPER_ADMIN }
 
     firewalls:

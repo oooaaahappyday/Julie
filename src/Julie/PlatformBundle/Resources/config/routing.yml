@@ -15,10 +15,11 @@ NouvelleGalerie:
     defaults: { _controller: JuliePlatformBundle:Galeries:nouvelleGalerie }
 
 Galerie_show:
-    path:     /galerie/{id}
+    path:     /{categorie}/galerie/{id}
     defaults: { _controller: JuliePlatformBundle:Galeries:showGalerie }
     requirements:
         id:   \d+
+        categorie: homepage|reportage|project|studio|video|others
 
 Galerie_edit:
     path:     /edit/{id}

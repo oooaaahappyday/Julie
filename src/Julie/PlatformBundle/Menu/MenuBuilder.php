@@ -57,26 +57,9 @@ class MenuBuilder
 				'galerie_' . $galerie->getId(), array(
 					'label' => $galerie->getNom(),
 					'route' => 'Galerie_show',
-					'routeParameters' => array('id' => $galerie->getId())
-					));
-		}
-		return $menu;
-	}
-
-	public function createArtMenu()
-	{
-		$menu = $this->factory->createItem('root');
-		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(
-			array('categorie' => 'art'),
-			array('rang' 			=> 'ASC')
-			);
-		foreach ($listGaleries as $galerie)
-		{
-			$menu->addChild(
-				'galerie_' . $galerie->getId(), array(
-					'label' => $galerie->getNom(),
-					'route' => 'Galerie_show',
-					'routeParameters' => array('id' => $galerie->getId())
+					'routeParameters' => array(
+						'categorie' => 'reportage',
+						'id' => $galerie->getId())
 					));
 		}
 		return $menu;
@@ -95,7 +78,9 @@ class MenuBuilder
 				'galerie_' . $galerie->getId(), array(
 					'label' => $galerie->getNom(),
 					'route' => 'Galerie_show',
-					'routeParameters' => array('id' => $galerie->getId())
+					'routeParameters' => array(
+						'categorie' => 'studio',
+						'id' => $galerie->getId())
 					));
 		}
 		return $menu;
@@ -114,7 +99,9 @@ class MenuBuilder
 				'galerie_' . $galerie->getId(), array(
 					'label' => $galerie->getNom(),
 					'route' => 'Galerie_show',
-					'routeParameters' => array('id' => $galerie->getId())
+					'routeParameters' => array(
+						'categorie' => 'video',
+						'id' => $galerie->getId())
 					));
 		}
 		return $menu;
@@ -133,7 +120,9 @@ class MenuBuilder
 				'galerie_' . $galerie->getId(), array(
 					'label' => $galerie->getNom(),
 					'route' => 'Galerie_show',
-					'routeParameters' => array('id' => $galerie->getId())
+					'routeParameters' => array(
+						'categorie' => 'others',
+						'id' => $galerie->getId())
 					));
 		}
 		return $menu;
@@ -152,7 +141,9 @@ class MenuBuilder
 				'galerie_' . $galerie->getId(), array(
 					'label' => $galerie->getNom(),
 					'route' => 'Galerie_show',
-					'routeParameters' => array('id' => $galerie->getId())
+					'routeParameters' => array(
+						'categorie' => 'projects',
+						'id' => $galerie->getId())
 					));
 		}
 		return $menu;
