@@ -44,7 +44,7 @@ img {
 	color: black;
 }
 .navbar-default .navbar-brand {
-	font-family: "Liberation serif";
+	font-family: "Liberation serif", Helvetica, Arial, sans-serif;
 	color: black;
 	font-size: 2.2em;
 }
@@ -214,8 +214,10 @@ img {
 }
 .element:nth-child(2) {
 	align-self: flex-end;
-	width: 230px;
+	min-width: 235px;
+	max-width: 300px;
 	font-size: 1.3em;
+	font-family: "Liberation serif", Helvetica, Arial, sans-serif;
 }
 #split_line { 
     margin: 25px 0;
