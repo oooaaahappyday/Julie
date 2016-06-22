@@ -9,7 +9,7 @@
 /bin/
 /composer.phar
 /vendor/
-web/img/
-web/uploads/img/
-node_modules
+/web/img/
+/web/uploads/img/
+/node_modules
 
