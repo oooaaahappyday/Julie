@@ -25,7 +25,7 @@ class HomeController extends Controller
 
 		$listImage = $imageRepository->findBy(array('galerie' => 1));
 
-		return $this->render('JuliePlatformBundle:Home:index.html.twig', array(
+		return $this->render('JuliePlatformBundle:Home:index.html.twig', array(			
 			'id' => 1,
 	  	'listImage' => $listImage
 		));

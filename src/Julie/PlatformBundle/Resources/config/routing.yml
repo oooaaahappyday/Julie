@@ -22,16 +22,18 @@ Galerie_show:
         categorie: homepage|reportage|projects|studio|video|others
 
 Galerie_edit:
-    path:     /edit/{id}
+    path:     /{categorie}/edit/{id}
     defaults: { _controller: JuliePlatformBundle:Galeries:editGalerie }
     requirements:
         id:   \d+
+        categorie: homepage|reportage|projects|studio|video|others
 
 Galerie_delete:
-    path:     /delete/{id}
+    path:     /{categorie}/delete/{id}
     defaults: { _controller: JuliePlatformBundle:Galeries:deleteGalerie }
     requirements:
         id:   \d+
+        categorie: homepage|reportage|projects|studio|video|others
 
 Image_details:
     path:     /image/{id}

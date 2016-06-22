@@ -43,7 +43,7 @@ class GaleriesController extends Controller
 	/**
 	 *@Template
 	 */
-	public function editGalerieAction($id, Request $request)
+	public function editGalerieAction($categorie,$id, Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
 		$galerie = $em->getRepository('JuliePlatformBundle:Galerie')->find($id);
@@ -68,15 +68,22 @@ class GaleriesController extends Controller
 				$em->persist($galerie);
 				$em->flush();
 				$request->getSession()->getFlashBag()->add('notice', 'Galerie modifiée.');
-				return $this->redirect($this->generateUrl('Galerie_show', array('id' => $galerie->getId())));
+				return $this->redirect($this->generateUrl('Galerie_show', array(
+					'id' => $galerie->getId(),
+					'categorie' => $galerie->getCategorie()
+					)
+				));
 			}
-			return array('form'=> $form->createView(), 'galerie'=> $galerie, 'id'=> $id);
+			return array('form'=> $form->createView(),
+				'categorie' => $categorie,
+				'galerie'		=> $galerie,
+				'id'				=> $id);
 		}
 
 		/**
 		 *@Template
 		 */
-		public function deleteGalerieAction($id, Request $request)
+		public function deleteGalerieAction($categorie, $id, Request $request)
 		{
 			$em = $this->getDoctrine()->getManager();
 			$galerie = $em->getRepository('JuliePlatformBundle:Galerie')->find($id);
@@ -98,6 +105,7 @@ class GaleriesController extends Controller
 
 			return array(
 				'form' 		=> $form->createView(),
+				'categorie' => $categorie,
 				'galerie' 	=> $galerie,
 				'id' 		=> $id
 				);
@@ -106,7 +114,7 @@ class GaleriesController extends Controller
 		/**
 		 *@Template
 		 */
-		public function showGalerieAction($id)
+		public function showGalerieAction($id, $categorie)
 		{
 			$imageRepository = $this
 			->getDoctrine()
@@ -117,7 +125,8 @@ class GaleriesController extends Controller
 				array('galerie' => $id));
 			
 			return array(
-					'id' 		=> $id,
+					'id' 				=> $id,
+					'categorie'	=> $categorie,
 					'listImage' => $listImage
 					);
 		}

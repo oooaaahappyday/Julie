@@ -6,8 +6,8 @@
 
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" id="left_side">
 		<div id="buttons-admin">
-			<a class="btn btn-info btn-sm" style="width:140px"  href="{{ path ('Galerie_edit', {'id': id} ) }}"   >Modifier cette galerie</a>
-			<a class="btn btn-danger btn-sm" style="width:140px" href="{{ path ('Galerie_delete', {'id': id} ) }}" >Suprimer cette galerie</a>
+			<a class="btn btn-info btn-sm" style="width:140px"  href="{{ path ('Galerie_edit', {'categorie': categorie, 'id': id} ) }}"   >Modifier cette galerie</a>
+			<a class="btn btn-danger btn-sm" style="width:140px" href="{{ path ('Galerie_delete', {'categorie': categorie, 'id': id} ) }}" >Suprimer cette galerie</a>
 		</div>
 		<div id="infos-img">
 			<ol>
@@ -54,28 +54,9 @@
 	
 	<div class="container show_gallery">
 	<div class="right_side">	
-			{#
-		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" id="left_side_visitor">
-			<button class="btn btn-info btn-sm" id="imageDetails" data-toggle="modal" data-target="	#details">
-  				Détails
-			</button>
-			<!-- Modal détails photo -->
-			<div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title" id="détailsPhoto">Détails de la photo</h4>
-						</div>
-						<div class="modal-body">
-							{{ render(controller('JuliePlatformBundle:Galeries:imageDetails', {'id': currentImage })) }}
-						</div>
-					</div><!-- modal-content -->
-				</div><!-- modal-dialog -->
-			</div><!-- modal -->
+		<div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 left_side_visitor">
 		</div>
-		#}
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 right_side_visitor">
+		<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 right_side_visitor">
 			<div id="slider" class="flexslider">
 				<ul class="slides">
 					{% for image in listImage %}
