@@ -41,6 +41,7 @@ class GalerieType extends AbstractType
                 'by_reference'  => false,
                 'required'      => false
                 ))
+            ->add('presentation', 'textarea')
             ->add('enregistrer','submit')
         ;
     }

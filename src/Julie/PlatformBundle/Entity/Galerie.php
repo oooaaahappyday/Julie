@@ -19,7 +19,6 @@ class Galerie
 {
     /**
      * @var integer
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -28,7 +27,6 @@ class Galerie
 
     /**
      * @var integer
-     *
      * @ORM\Column(name="rang", type="integer")
      * @Assert\Type(
      *  type="integer",
@@ -39,7 +37,6 @@ class Galerie
 
     /**
      * @var string
-     *
      * @ORM\Column(name="nom", type="string", length=255)
      * @Assert\Length(min=2)
      */
@@ -47,49 +44,42 @@ class Galerie
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="date", type="date")
      */
     private $date;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="pays", type="string", length=255)
      */
     private $pays;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="lieux", type="string", length=255)
      */
     private $lieux;
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="updated_at", type="datetime")
      */
     private $updatedAt;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="materiel", type="text")
      */
     private $materiel;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="categorie", type="string", length=255)
      */
     private $categorie;
@@ -100,6 +90,12 @@ class Galerie
      */
     private $images;
 
+    /**
+     * @var text
+     * @ORM\Column(name="description", type="text")
+     * @Assert\Length(min=2)
+     */
+    private $presentation;
 
     public function __construct()
     {
@@ -426,5 +422,29 @@ class Galerie
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Set presentation
+     *
+     * @param string $presentation
+     *
+     * @return Galerie
+     */
+    public function setPresentation($presentation)
+    {
+        $this->presentation = $presentation;
+
+        return $this;
+    }
+
+    /**
+     * Get presentation
+     *
+     * @return string
+     */
+    public function getPresentation()
+    {
+        return $this->presentation;
     }
 }

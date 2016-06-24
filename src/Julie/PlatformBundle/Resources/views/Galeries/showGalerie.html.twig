@@ -53,7 +53,21 @@
 {% set currentImage = 40 %}
 	
 	<div class="container show_gallery">
-	<div class="right_side">	
+	<div class="right_side has-inner-drawer">
+		{# Drawer for galery info #}
+		<div id="info-menu" class="drawer drawer-inside dw-xs-11 dw-sm-10 dw-md-4 fold" aria-labelledby="info-menu">
+      <div class="drawer-controls">
+          <a href="#info-menu" data-toggle="drawer" href="#info-menu" aria-foldedopen="false" aria-controls="info-menu" class="btn btn-info btn-xs">Détails</a>
+      </div>
+      <div class="drawer-contents">
+        <div class="drawer-heading">
+          <h4 class="drawer-title">{{ galerie.nom }}</h4>
+        </div>
+        <div class="panel-body">
+        	<p>{{ galerie.presentation }}</p>
+    		</div>
+      </div>
+    </div>
 			{#
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" id="left_side_visitor">
 			<button class="btn btn-info btn-sm" id="imageDetails" data-toggle="modal" data-target="	#details">

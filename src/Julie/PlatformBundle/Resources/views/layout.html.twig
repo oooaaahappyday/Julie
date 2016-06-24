@@ -7,8 +7,9 @@
 	<title>Julie Franchet</title>
 
 	{% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
 	<link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('css/bootstrap-drawer.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/flexslider.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 	{#
@@ -49,8 +50,9 @@
 
 {# JAVASCRIPT #}
 {% block javascript %}
-	<script type="text/Javascript" src="{{ asset('/js/jquery-1.11.1.js')}}"></script>
+	<script type="text/Javascript" src="{{ asset('js/jquery-1.11.1.js')}}"></script>
 	<script type="text/Javascript" src="{{ asset('js/bootstrap.min.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('js/drawer.min.js')}}"></script>
 	<script type="text/Javascript" src="{{ asset('js/jquery.flexslider-min.js')}}"></script>
 	{# Required by website owner 
 	<script type="text/Javascript">

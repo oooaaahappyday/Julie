@@ -116,6 +116,12 @@ class GaleriesController extends Controller
 		 */
 		public function showGalerieAction($id, $categorie)
 		{
+			$em = $this->getDoctrine()->getManager();
+			$galerie = $em->getRepository('JuliePlatformBundle:Galerie')->find($id);
+			if (null === $galerie) {
+				throw new NotFoundHttpException("La galerie n'existe pas.");
+			}
+
 			$imageRepository = $this
 			->getDoctrine()
 			->getManager()
@@ -127,6 +133,7 @@ class GaleriesController extends Controller
 			return array(
 					'id' 				=> $id,
 					'categorie'	=> $categorie,
+					'galerie' 	=> $galerie,
 					'listImage' => $listImage
 					);
 		}

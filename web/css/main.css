@@ -37,6 +37,9 @@ img {
 	height: auto;
 }
 /*----------//////////----------NAVBAR----------//////////----------*/
+.navbar-fixed-top {
+	z-index: 1040;/*Prevent side menu to cover navbar*/
+}
 .navbar {
 	margin-bottom: 0;
 }
@@ -87,6 +90,7 @@ img {
 .show_gallery {
 	height: 100%;
 	width: 100%;
+	padding: 0;
 }
 .right_side {
 	height: 100%;
@@ -100,7 +104,7 @@ img {
 }
 .right_side_visitor {
 	height: 100%;
-	padding-top: 15px;
+	padding: 10px 0 10px 0;
 	max-width: 100%;
 }
 .left_side_visitor {
@@ -128,47 +132,84 @@ img {
 }
 
 /*----------//////////----------FLEXSLIDER----------//////////----------*/
-#slider {
-	height: 85%;
+#slider_home {
+	height: 100%;
 	margin: 0;
+	border: 0;
+}
+#slider_home .flex-active-slide img {
+	margin: auto;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+}
+#slider_home .flex-viewport {
+	height: 100%;
+}
+#slider_home .flex-active-slide img {
+	margin: auto;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+}
+#slider_home > ul {
+	max-height: 96%;
+}
+#slider {
+	height: 80%;
+	margin: 0;
+	border: 2px;
+}
+#slider .flex-viewport {
+	max-height: 100%;
+}
+#slider .flex-prev {
+	z-index: 1036;
+}
+.slides {
+	height: 100%;
+}
+.slides > li {
+	width: 100%;
+	height: 100%;
+}
+.slides > li > img {
+	max-height: 100%;
+	width: auto;
+	height: auto;
 }
 #slider .flex-active-slide img {
 	margin: auto;
 	max-height: 100%;
 	width: auto;
 	height: auto;
-	/*
-	*/
 }
 #carousel {
-	height: 15%;
+	height: 20%;
 	margin-bottom: 0;
+}
+#carousel .flex-viewport {
+	max-height: 100%;
 }
 #carousel .slides > img {
 	max-height: 100%;
 	width: auto;
 	height: auto;
+	margin: auto;
 }
+
+/*
 .flex-active-slide {
 	height: 100%;
-}
-.slides {
-	height: 100%;
-}
-.slides > li {
-	text-align: center;
 }
 #carousel .slides > li {
 	max-height: 100%;
 	height: auto;
 	width: auto;	
 }
-.flex-viewport {
-	height: 100%;
-}
+*/
 
-
-/* -- keep carousel centered -- */
+/* -- keep carousel centered when only few pictures-- */
 .flex-centered .slides {width: 100%!important; text-align: center;}
 .flex-centered .slides li {display: inline-block!important; *display: inline!important; float: none!important;}
 .flexslider{white-space: nowrap;} 
@@ -245,6 +286,9 @@ img {
 	list-style-type: circle;
 	margin-left: 10px; 
 }
+
+/*----------//////////----------SIDE MENU----------//////////----------*/
+
 
 /*----------//////////----------MEDIA QUERIES----------//////////----------*/
 @media (max-width: 1000px) {

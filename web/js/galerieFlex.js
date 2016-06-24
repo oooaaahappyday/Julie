@@ -23,21 +23,9 @@ $(document).ready(function() {
   });
  
   $('#slider').flexslider({
-    before: function(slider, currentSlide) {
-        /*
-        document.getElementById("imageDetails").onclick = updateCurrentImage;
-        
-        function updateCurrentImage() {
-        var currentImage = slider.currentSlide;
-        console.log(currentImage);
-        return currentImage;
-        }
-        */
-    },
     keyboard: true,
     smoothHeight: true,
     animation: "slide",
-    easing: "swing",
     controlNav: false,
     animationLoop: false,
     slideshow: true,
