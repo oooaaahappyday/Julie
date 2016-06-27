@@ -19,21 +19,21 @@ Galerie_show:
     defaults: { _controller: JuliePlatformBundle:Galeries:showGalerie }
     requirements:
         id:   \d+
-        categorie: homepage|reportage|projects|studio|video|others
+        categorie: homepage|reportage|projects|studio|video|other
 
 Galerie_edit:
     path:     /{categorie}/edit/{id}
     defaults: { _controller: JuliePlatformBundle:Galeries:editGalerie }
     requirements:
         id:   \d+
-        categorie: homepage|reportage|projects|studio|video|others
+        categorie: homepage|reportage|projects|studio|video|other
 
 Galerie_delete:
     path:     /{categorie}/delete/{id}
     defaults: { _controller: JuliePlatformBundle:Galeries:deleteGalerie }
     requirements:
         id:   \d+
-        categorie: homepage|reportage|projects|studio|video|others
+        categorie: homepage|reportage|projects|studio|video|other
 
 Image_details:
     path:     /image/{id}

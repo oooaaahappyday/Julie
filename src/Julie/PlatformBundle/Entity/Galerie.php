@@ -92,7 +92,7 @@ class Galerie
 
     /**
      * @var text
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="presentation", type="text")
      * @Assert\Length(min=2)
      */
     private $presentation;

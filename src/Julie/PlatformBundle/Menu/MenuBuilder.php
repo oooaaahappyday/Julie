@@ -111,7 +111,7 @@ class MenuBuilder
 	{
 		$menu = $this->factory->createItem('root');
 		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(
-			array('categorie' => 'others'),
+			array('categorie' => 'other'),
 			array('rang' 			=> 'ASC')
 			);
 		foreach ($listGaleries as $galerie)
@@ -121,7 +121,7 @@ class MenuBuilder
 					'label' => $galerie->getNom(),
 					'route' => 'Galerie_show',
 					'routeParameters' => array(
-						'categorie' => 'others',
+						'categorie' => 'other',
 						'id' => $galerie->getId())
 					));
 		}
