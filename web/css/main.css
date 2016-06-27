@@ -147,7 +147,7 @@ img {
 #slider_home .flex-viewport {
 	height: 100%;
 }
-#slider_home .flex-active-slide img {
+#slider_home img {
 	margin: auto;
 	max-height: 100%;
 	width: auto;
@@ -179,7 +179,7 @@ img {
 	width: auto;
 	height: auto;
 }
-#slider .flex-active-slide img {
+#slider img {
 	margin: auto;
 	max-height: 100%;
 	width: auto;
@@ -268,10 +268,9 @@ img {
 #split_line { 
     margin: 25px 0;
     height: 1px;
-    background: black;
-    background: linear-gradient(to white, black, white);
     background: -webkit-gradient(linear, 0 0, 100% 0, from(white), to(white), color-stop(50%, black));
     background: -moz-linear-gradient(to right, white, black, white);
+    background: black;
 }
 #expos {
 	height:	100%;
