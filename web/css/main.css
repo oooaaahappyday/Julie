@@ -132,6 +132,7 @@ img {
 }
 
 /*----------//////////----------FLEXSLIDER----------//////////----------*/
+
 #slider_home {
 	height: 100%;
 	margin: 0;
@@ -268,7 +269,9 @@ img {
     margin: 25px 0;
     height: 1px;
     background: black;
+    background: linear-gradient(to white, black, white);
     background: -webkit-gradient(linear, 0 0, 100% 0, from(white), to(white), color-stop(50%, black));
+    background: -moz-linear-gradient(to right, white, black, white);
 }
 #expos {
 	height:	100%;
