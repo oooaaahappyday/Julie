@@ -148,4 +148,25 @@ class MenuBuilder
 		}
 		return $menu;
 	}
+
+	public function createNewsMenu()
+	{
+		$menu = $this->factory->createItem('root');	
+		$listGaleries = $this->em->getRepository('JuliePlatformBundle:Galerie')->findBy(
+			array('categorie' => 'news'),
+			array('rang' 			=> 'ASC')
+		);
+		foreach ($listGaleries as $galerie)
+		{
+			$menu->addChild(
+				'galerie_' . $galerie->getId(), array(
+					'label' => $galerie->getNom(),
+					'route' => 'Galerie_show',
+					'routeParameters' => array(
+						'categorie' => 'news',
+						'id' => $galerie->getId())
+					));
+		}
+		return $menu;
+	}
 }
